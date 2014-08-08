@@ -9,9 +9,27 @@
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
   </head>
-  <body data-spy="scroll" data-target=".bs-doc-sidebar">
-
-    <!--nav-->
-
+  <body>
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href="javascript:;">
+        Action
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">Regular link</a></li>
+        <li><a tabindex="-1" href="#">Disabled link</a></li>
+        <li class="dropdown-submenu">
+          <a tabindex="-1" href="#">Another link</a>
+          <ul class="dropdown-menu">
+            <li><a tabindex="-1" href="#">Regular link</a></li>
+            <li><a tabindex="-1" href="#">Disabled link</a></li>
+            <li><a tabindex="-1" href="#">Regular link</a></li>
+            <li><a tabindex="-1" href="#">Disabled link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>

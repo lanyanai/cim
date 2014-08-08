@@ -1,0 +1,6 @@
+基础：jquery/bootstrap2 考虑到兼容性，选择bootstrap2
+图表js库：highcharts 展示图表
+日期：fullCalendar用于展示日期 date-picker用于选择日期
+
+填充blade模板
+用户 设备
