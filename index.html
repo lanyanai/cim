@@ -8,28 +8,112 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
+    <style>
+      .nav-collapse{
+        margin-top:15px;
+      }
+      body{
+        padding-top: 71px;
+      }
+      .carousel-inner .item img{
+        width: 100%;
+      }
+      .detail-item img{
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
-    <div class="btn-group">
-      <a class="btn dropdown-toggle btn-primary" data-toggle="dropdown" href="javascript:;">
-        Action
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">Regular link</a></li>
-        <li><a tabindex="-1" href="#">Disabled link</a></li>
-        <li class="dropdown-submenu">
-          <a tabindex="-1" href="#">Another link</a>
-          <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="#">Regular link</a></li>
-            <li><a tabindex="-1" href="#">Disabled link</a></li>
-            <li><a tabindex="-1" href="#">Regular link</a></li>
-            <li><a tabindex="-1" href="#">Disabled link</a></li>
-          </ul>
-        </li>
-      </ul>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#"><img src="img/logo.jpg"></a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  产品
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a tabindex="-1" href="#">采集器Device</a></li>
+                  <li><a tabindex="-1" href="#">血压BP</a></li>
+                  <li><a tabindex="-1" href="#">心电ECG</a></li>
+                </ul>
+              </li>
+              <li class="">
+                <a href="#">云平台</a>
+              </li>
+              <li class="">
+                <a href="#">应用下载</a>
+              </li>
+              <li class="">
+                <a href="#">
+                  <i class="icon-shopping-cart"></i>
+                  在线商店
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+    <div id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+          <div class="carousel-caption">
+            <h4>First Thumbnail label</h4>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+          <div class="carousel-caption">
+            <h4>Second Thumbnail label</h4>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+          <div class="carousel-caption">
+            <h4>Third Thumbnail label</h4>
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3 detail-item">
+          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-01.jpg">
+        </div>
+        <div class="span3 detail-item">
+          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-01.jpg">
+        </div>
+        <div class="span3 detail-item">
+          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-01.jpg">
+        </div>
+        <div class="span3 detail-item">
+          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-01.jpg">
+        </div>
+      </div>
+    </div>
+
     <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
   </body>
 </html>
