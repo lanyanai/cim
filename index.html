@@ -21,6 +21,12 @@
       .detail-item img{
         width: 100%;
       }
+      .demo-container{
+        height: 450px;
+      }
+      .demo-placeholder{
+        height: 400px;
+      }
     </style>
   </head>
   <body>
@@ -71,21 +77,21 @@
       </ol>
       <div class="carousel-inner">
         <div class="item active">
-          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
           <div class="carousel-caption">
             <h4>First Thumbnail label</h4>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
           </div>
         </div>
         <div class="item">
-          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
           <div class="carousel-caption">
             <h4>Second Thumbnail label</h4>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
           </div>
         </div>
         <div class="item">
-          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-01.jpg" alt="">
+          <img src="http://v2.bootcss.com/assets/img/bootstrap-mdo-sfmoma-02.jpg" alt="">
           <div class="carousel-caption">
             <h4>Third Thumbnail label</h4>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -113,7 +119,129 @@
       </div>
     </div>
 
-    <script src="js/jquery-1.11.1.min.js"></script>
+    <div class="container demo-container">
+      <div class="row">
+        <div id="placeholder1" class="demo-placeholder span4"></div>
+        <div id="placeholder2" class="demo-placeholder span4"></div>
+        <div id="placeholder3" class="demo-placeholder span4"></div>
+      </div>
+      <div class="row">
+        <div id="placeholder4" class="demo-placeholder span4"></div>
+        <div id="placeholder5" class="demo-placeholder span4"></div>
+        <div id="placeholder6" class="demo-placeholder span4"></div>
+      </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
+    <script language="javascript" type="text/javascript" src="js/jquery.js"></script>
+    <script language="javascript" type="text/javascript" src="js/jquery.flot.js"></script>
+    <script language="javascript" type="text/javascript" src="js/jquery.flot.time.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script type="text/javascript">
+
+      $(function() {
+
+        var d1 = [
+          [new Date(2014, 6, 6).getTime(), 37.2],
+          [new Date(2014, 6, 8).getTime(), 36.7],
+          [new Date(2014, 6, 10).getTime(), 36.9],
+          [new Date(2014, 6, 12).getTime(), 37.0],
+          [new Date(2014, 6, 14).getTime(), 37.5],
+          [new Date(2014, 6, 16).getTime(), 38.0],
+          [new Date(2014, 6, 18).getTime(), 37.2],
+          [new Date(2014, 6, 20).getTime(), 36.2],
+          [new Date(2014, 6, 21).getTime(), 37.4],
+          [new Date(2014, 6, 22).getTime(), 37.8]
+        ];
+
+
+        var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+
+        var d3 = [];
+        for (var i = 0; i < 14; i += 0.5) {
+          d3.push([i, Math.cos(i)]);
+        }
+
+        var d4 = [];
+        for (var i = 0; i < 14; i += 0.1) {
+          d4.push([i, Math.sqrt(i * 10)]);
+        }
+
+        var d5 = [];
+        for (var i = 0; i < 14; i += 0.5) {
+          d5.push([i, Math.sqrt(i)]);
+        }
+
+        var d6 = [];
+        for (var i = 0; i < 14; i += 0.5 + Math.random()) {
+          d6.push([i, Math.sqrt(2*i + Math.sin(i) + 5)]);
+        }
+
+        $.plot("#placeholder1", [{
+          data: d1,
+          points: { show: true, fill: true, fillColor:"#00f", lineWidth:0, radius:5, shadowSize:0},
+          label:"example1"
+        }], {
+          legend:{
+            show:false
+          },
+          xaxis:{
+            mode:"time",
+            tickSize: [7, "day"],
+            timeformat: "%m-%d"
+          },
+          yaxis:{
+            min:32,
+            max:42,
+            tickSize:2,
+            tickFormatter: function(val, axis){
+              return val + "℃"
+            }
+          },
+          grid:{
+            borderWidth: 0,
+            markings:[
+              {yaxis: { from: 36, to: 38 }, color: "#bb0000"}
+            ]
+          }
+        });
+
+        $.plot("#placeholder2", [{
+          data: d2,
+          bars: { show: true },
+          label:"example2"
+        }]);
+
+        $.plot("#placeholder3", [{
+          data: d3,
+          points: { show: true },
+          label:"example3"
+        }]);
+
+        $.plot("#placeholder4", [{
+          data: d4,
+          lines: { show: true },
+          label:"example4"
+        }]);
+
+        $.plot("#placeholder5", [{
+          data: d5,
+          lines: { show: true },
+          points: { show: true },
+          label:"example5"
+        }]);
+
+        $.plot("#placeholder6", [{
+          data: d6,
+          lines: { show: true, steps: true },
+          label:"example6"
+        }]);
+        // Add the Flot version string to the footer
+
+        $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
+      });
+
+    </script>
   </body>
 </html>
