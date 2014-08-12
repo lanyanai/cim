@@ -310,12 +310,12 @@
 
             if(item.seriesIndex == 0){
               $("#tooltip2").html("低压" + y + "mmHg")
-                  .css({top: item.pageY+5, left: item.pageX+5, backgroundColor: $.color.parse(item.series.points.fillColor).scale('rgb', 0.5)})
+                  .css({top: item.pageY+5, left: item.pageX+5, "background-color": $.color.parse(item.series.points.fillColor).scale('rgb', 0.5).toString()})
                   .fadeIn(200);
             }
             else if(item.seriesIndex == 1){
               $("#tooltip2").html("高压" + y + "mmHg")
-                  .css({top: item.pageY+5, left: item.pageX+5, backgroundColor: $.color.parse(item.series.points.fillColor).scale('rgb', 0.5)})
+                  .css({top: item.pageY+5, left: item.pageX+5, "background-color": $.color.parse(item.series.points.fillColor).scale('rgb', 0.5).toString()})
                   .fadeIn(200);
             }
 
