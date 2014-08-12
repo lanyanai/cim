@@ -9,23 +9,27 @@
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <style>
-      .nav-collapse{
-        margin-top:15px;
-      }
-      body{
-        padding-top: 71px;
-      }
-      .carousel-inner .item img{
-        width: 100%;
-      }
-      .detail-item img{
-        width: 100%;
-      }
+      /*.nav-collapse{*/
+        /*margin-top:15px;*/
+      /*}*/
+      /*body{*/
+        /*padding-top: 71px;*/
+      /*}*/
+      /*.carousel-inner .item img{*/
+        /*width: 100%;*/
+      /*}*/
+      /*.detail-item img{*/
+        /*width: 100%;*/
+      /*}*/
       .demo-container{
         height: 450px;
       }
       .demo-placeholder{
         height: 400px;
+      }
+      .demo-placeholder{
+        margin-top:50px;
+        margin-bottom:50px;
       }
     </style>
   </head>
@@ -132,14 +136,13 @@
       </div>
     </div>
 
+    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
     <script src="js/jquery.js"></script>
-    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
-    <script language="javascript" type="text/javascript" src="js/jquery.js"></script>
-    <script language="javascript" type="text/javascript" src="js/jquery.flot.js"></script>
-    <script language="javascript" type="text/javascript" src="js/jquery.flot.time.js"></script>
-    <script language="javascript" type="text/javascript" src="js/jquery.flot.stack.js"></script>
+    <script src="js/jquery.flot.js"></script>
+    <script src="js/jquery.flot.time.js"></script>
+    <script src="js/jquery.flot.stack.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script type="text/javascript">
+    <script>
 
       $(function() {
         //体温
@@ -187,7 +190,8 @@
               {yaxis: { from: 36, to: 38 }, color: "#f9fbfc"}
             ],
             hoverable: true,
-            clickable: true
+            clickable: true,
+            tickColor: "#a6adb5"
           }
         });
 
@@ -395,6 +399,7 @@
             }
           },
           grid:{
+            tickColor: "#a6adb5",
             borderWidth: 0,
             markings:generateHeart,
             hoverable: true,
@@ -506,6 +511,7 @@
             tickSize:300
           },
           grid:{
+            tickColor: "#a6adb5",
             borderWidth:0,
             hoverable: true,
             clickable: true
@@ -539,6 +545,7 @@
             tickSize:400
           },
           grid:{
+            tickColor: "#a6adb5",
             borderWidth:0,
             markings:[
               {yaxis: {from: 0, to: 300}, xaxis: {from: 0, to: 2}, color:"#86e6fa"},
@@ -553,9 +560,6 @@
           }
         });
 
-        // Add the Flot version string to the footer
-
-        $("#footer").prepend("Flot " + $.plot.version + " &ndash; ");
       });
 
     </script>

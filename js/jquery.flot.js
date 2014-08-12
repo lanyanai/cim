@@ -147,7 +147,7 @@ Licensed under the MIT license.
 		// Resizing should reset the state (excanvas seems to be buggy though)
 
 		if (this.width != width) {
-			element.width = width * pixelRatio;
+			element.width = width * pixelRatio;//canvas中使用实际像素
 			element.style.width = width + "px";
 			this.width = width;
 		}
@@ -2228,6 +2228,7 @@ Licensed under the MIT license.
             });
         }
 
+        //绘制数据
         function drawSeries(series) {
             if (series.lines.show)
                 drawSeriesLines(series);
@@ -2236,7 +2237,7 @@ Licensed under the MIT license.
             if (series.points.show)
                 drawSeriesPoints(series);
         }
-
+        //绘制线
         function drawSeriesLines(series) {
             function plotLine(datapoints, xoffset, yoffset, axisx, axisy) {
                 var points = datapoints.points,
