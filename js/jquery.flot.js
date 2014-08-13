@@ -179,7 +179,7 @@ Licensed under the MIT license.
 	};
 
 	// Finishes rendering the canvas, including managing the text overlay.
-
+  //绘制文本层
 	Canvas.prototype.render = function() {
 
 		var cache = this._textCache;
@@ -245,7 +245,7 @@ Licensed under the MIT license.
 		if (layer == null) {
 
 			// Create the text layer container, if it doesn't exist
-
+      //文本层
 			if (this.textContainer == null) {
 				this.textContainer = $("<div class='flot-text'></div>")
 					.css({
@@ -257,7 +257,7 @@ Licensed under the MIT license.
 						'font-size': "smaller",
 						color: "#545454"
 					})
-					.insertAfter(this.element);
+					.insertAfter(this.element);//在canvas之后插入
 			}
 
 			layer = this.text[classes] = $("<div></div>")
@@ -275,7 +275,7 @@ Licensed under the MIT license.
 		return layer;
 	};
 
-	// Creates (if necessary) and returns a text info object.
+	// Creates (if necessary) and returns a text info object. text info object
 	//
 	// The object looks like this:
 	//
@@ -690,13 +690,13 @@ Licensed under the MIT license.
             hooks = null;
             highlights = [];
             plot = null;
-        };
+        };//销毁
         plot.resize = function () {
         	var width = placeholder.width(),
         		height = placeholder.height();
             surface.resize(width, height);
             overlay.resize(width, height);
-        };
+        };//调整大小
 
         // public attributes
         plot.hooks = hooks;
@@ -717,6 +717,8 @@ Licensed under the MIT license.
                 hook[i].apply(this, args);
         }
 
+
+        //初始化插件
         function initPlugins() {
 
             // References to key classes, allowing plugins to modify them

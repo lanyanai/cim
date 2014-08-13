@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>云平台——登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <link href="css/bootstrap.css" rel="stylesheet">
+  </head>
+  <style>
+    /*public nav css style*/
+    .public-nav-bar-inner{
+      background-color: #283e56;
+      background-image: none;
+      font-family: "Microsoft YaHei";
+    }
+    .public-nav-bar-inner .public-nav>li>a{
+      color:#fff;
+      padding: 24px 30px 29px;
+      border-top: 5px solid transparent;
+      text-shadow: none;
+      margin: 0 10px;
+    }
+    .public-nav-bar-inner .public-nav>li.active{
+      background-color: transparent;
+    }
+    .public-nav-bar-inner .public-nav>li.active>a{
+      border-top-color: #37b0e9;
+      color:  #37b0e9;
+      background-color: transparent;
+      background-image: none;
+      box-shadow: none;
+    }
+    .navbar .logo{
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+    .public-nav-bar-inner .public-nav>li.active>a:hover, .public-nav-bar-inner .public-nav>li>a:hover{
+      color: #37b0e9;
+      text-decoration: none;
+      background-color: transparent;
+      box-shadow: none;
+      border-top-color: #37b0e9;
+    }
+
+  </style>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner public-nav-bar-inner">
+        <div class="container">
+          <a class="brand logo" href="#"><img src="img/logo.jpg"></a>
+          <div class="nav-collapse collapse">
+            <ul class="nav public-nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  产品
+                  <span class="caret icon-white"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a tabindex="-1" href="#">采集器Device</a></li>
+                  <li><a tabindex="-1" href="#">血压BP</a></li>
+                  <li><a tabindex="-1" href="#">心电ECG</a></li>
+                </ul>
+              </li>
+              <li class="active">
+                <a href="#">云平台</a>
+              </li>
+              <li class="">
+                <a href="#">应用下载</a>
+              </li>
+              <li class="">
+                <a href="#">
+                  在线商店
+                </a>
+              </li>
+            </ul>
+          </div>
+          <ul class="nav pull-right public-nav">
+            <li class="dropdown" id="fat-menu">
+              <a data-toggle="dropdown" class="dropdown-toggle" role="button" id="drop3" href="#">ximeng@gmial.com<b class="caret"></b></a>
+              <ul aria-labelledby="drop3" role="menu" class="dropdown-menu">
+                <li role="presentation"><a href="#" tabindex="-1" role="menuitem">用户资料</a></li>
+                <li role="presentation"><a href="#" tabindex="-1" role="menuitem">基本设置</a></li>
+                <li role="presentation"><a href="#" tabindex="-1" role="menuitem">退出登录</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>
