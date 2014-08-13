@@ -735,6 +735,7 @@ Licensed under the MIT license.
             }
         }
 
+        //解析配置项
         function parseOptions(opts) {
 
             $.extend(true, options, opts);
@@ -880,6 +881,7 @@ Licensed under the MIT license.
             executeHooks(hooks.processOptions, [options]);
         }
 
+        //设置数据
         function setData(d) {
             series = parseData(d);
             fillInSeriesOptions();
