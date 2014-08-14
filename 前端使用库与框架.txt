@@ -1,6 +1,6 @@
-基础：jquery/bootstrap2 考虑到兼容性，选择bootstrap2
-图表js库：highcharts 展示图表
-日期：fullCalendar用于展示日期 date-picker用于选择日期
+鍩虹锛歫query/bootstrap2 鑰冭檻鍒板吋瀹规�э紝閫夋嫨bootstrap2
+鍥捐〃js搴擄細highcharts 灞曠ず鍥捐〃
+鏃ユ湡锛歠ullCalendar鐢ㄤ簬灞曠ず鏃ユ湡 date-picker鐢ㄤ簬閫夋嫨鏃ユ湡
 
-填充blade模板
-用户 设备
+濉厖blade妯℃澘
+鐢ㄦ埛 璁惧
