@@ -8,77 +8,190 @@
     <link href="css/bootstrap.css" rel="stylesheet">
   </head>
   <style>
-    /*public nav css style*/
-    .public-nav-bar-inner{
-      background-color: #283e56;
-      background-image: none;
-      font-family: "Microsoft YaHei";
-    }
-    .public-nav-bar-inner .public-nav>li>a{
-      color:#fff;
-      padding: 24px 30px 29px;
-      border-top: 5px solid transparent;
-      text-shadow: none;
-      margin: 0 10px;
-    }
-    .public-nav-bar-inner .public-nav>li.active{
-      background-color: transparent;
-    }
-    .public-nav-bar-inner .public-nav>li.active>a{
-      border-top-color: #37b0e9;
-      color:  #37b0e9;
-      background-color: transparent;
-      background-image: none;
-      box-shadow: none;
-    }
-    .navbar .logo{
-      padding-top: 24px;
-      padding-bottom: 24px;
-    }
-    .public-nav-bar-inner .public-nav>li.active>a:hover, .public-nav-bar-inner .public-nav>li>a:hover{
-      color: #37b0e9;
-      text-decoration: none;
-      background-color: transparent;
-      box-shadow: none;
-      border-top-color: #37b0e9;
+    body{
+      background-color: #f9fbfc;
     }
 
+    #user-menu .dropdown-toggle{
+      margin: 0;
+      border: none;
+      padding:29px 0;
+    }
+
+    /*login area style*/
+    .login-area{
+      background: url("img/login_bg.jpg") center no-repeat #37b0e9;
+      width: 100%;
+      height: 400px;
+    }
+
+    .cloud-intro{
+      margin-left: 60px;
+      margin-top: 50px;
+      color: #fff;
+    }
+    .cloud-intro li{
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .login-form{
+      margin-top:30px;
+      background-color: #2f779f;
+    }
+    .login-form form{
+      padding: 20px;
+    }
+    .login-form h4{
+      color: #fff;
+      font-size: 18px;
+      margin:0 0 20px;
+    }
+    .login-form p{
+      margin:0;
+    }
+    .form-group{
+      position: relative;
+    }
+    .form-group .input-area{
+      padding: 12px 10px 12px 40px;
+      display: block;
+      margin:0 auto 20px;
+    }
+    .form-group i{
+      display: block;
+      position: absolute;
+      top:13px;
+      left: 10px;
+      width: 24px;
+      height: 20px;
+    }
+    .icon-user{
+      background: url("img/user.png") center no-repeat;
+    }
+    .icon-lock{
+      background: url("img/lock.png") center no-repeat;
+    }
+    .forget-pd a{
+      float: right;
+      margin-bottom: 20px;
+      margin-top: -10px;
+      color: #fff;
+    }
+    .register a:hover,
+    .forget-pd a:hover{
+      color: #fff;
+      text-decoration: underline;
+    }
+    .form-btn{
+      font-size:14px;
+      line-height: 44px;
+      display: block;
+      background-color: #37b0e9;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-bottom:40px;
+      border: none;
+      width: 100%;
+    }
+    .form-btn:hover{
+      background-color: #3cbefb;
+      color: #fff;
+      text-decoration: none;
+    }
+    .form-btn:active{
+      color: #fff;
+      text-decoration: none;
+      background-color: #31a5db;
+    }
+    .form-btn.disabled{
+      color: #a6adb5;
+      background-color: #e5eef4;
+      text-decoration: none;
+    }
+    .register a{
+      float: right;
+      color: #fff;
+    }
+
+    .function-intro h1{
+      font-size: 36px;
+      margin:45px 0 1000px;
+      color: #0074ad;
+      text-align: center;
+    }
+
+
+    /*footer style*/
+    .footer{
+      color: #283e56;
+      font-size: 12px;
+    }
+    .footer-info{
+      padding: 25px 0;
+      background-color: #f1f5f7;
+    }
+    .footer-info h3{
+      font-size: 18px;
+      line-height: 34px;
+      border-bottom: 1px solid #dfe5e8;
+      margin:0;
+    }
+    .footer-info ul{
+      margin:20px 0 10px 15px;
+    }
+    .footer-info li{
+      margin-bottom:15px;
+    }
+    .footer-info li a{
+      color: #283e56;
+    }
+    .footer-info h2.phone{
+      font-size: 24px;
+      font-weight: normal;
+    }
+    .footer-copy{
+      text-align: center;
+      margin:20px 0 30px;
+    }
   </style>
   <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner public-nav-bar-inner">
+
+    <!--导航-->
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
         <div class="container">
-          <a class="brand logo" href="#"><img src="img/logo.jpg"></a>
-          <div class="nav-collapse collapse">
-            <ul class="nav public-nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  产品
-                  <span class="caret icon-white"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="#">采集器Device</a></li>
-                  <li><a tabindex="-1" href="#">血压BP</a></li>
-                  <li><a tabindex="-1" href="#">心电ECG</a></li>
-                </ul>
-              </li>
-              <li class="active">
-                <a href="#">云平台</a>
-              </li>
-              <li class="">
-                <a href="#">应用下载</a>
-              </li>
-              <li class="">
-                <a href="#">
-                  在线商店
-                </a>
-              </li>
-            </ul>
-          </div>
-          <ul class="nav pull-right public-nav">
-            <li class="dropdown" id="fat-menu">
-              <a data-toggle="dropdown" class="dropdown-toggle" role="button" id="drop3" href="#">ximeng@gmial.com<b class="caret"></b></a>
-              <ul aria-labelledby="drop3" role="menu" class="dropdown-menu">
+          <a class="brand" href="#"><img src="img/logo.jpg"></a>
+          <ul class="nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                产品
+                <span class="caret icon-white"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#">采集器Device</a></li>
+                <li><a tabindex="-1" href="#">血压BP</a></li>
+                <li><a tabindex="-1" href="#">心电ECG</a></li>
+              </ul>
+            </li>
+            <li class="active">
+              <a href="#">云平台</a>
+            </li>
+            <li class="">
+              <a href="#">应用下载</a>
+            </li>
+            <li class="">
+              <a href="#">
+                在线商店
+              </a>
+            </li>
+          </ul>
+          <ul class="nav pull-right">
+            <li class="dropdown" id="user-menu">
+              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">ximeng@gmial.com<b class="caret"></b></a>
+              <ul role="menu" class="dropdown-menu">
                 <li role="presentation"><a href="#" tabindex="-1" role="menuitem">用户资料</a></li>
                 <li role="presentation"><a href="#" tabindex="-1" role="menuitem">基本设置</a></li>
                 <li role="presentation"><a href="#" tabindex="-1" role="menuitem">退出登录</a></li>
@@ -88,6 +201,90 @@
         </div>
       </div>
     </div>
+
+    <!--登录-->
+    <div class="login-area">
+      <div class="container">
+        <div class="row">
+          <div class="span7 cloud-intro">
+            <h2>希盟云服务平台</h2>
+            <ul>
+              <li>患有心脏病并希望24小时连续监护自己身体状况的。</li>
+              <li>是目前世界上唯一一款能将心脏活动情况等十多项在一起的健康监护产品。</li>
+              <li>能在运动状态下，准确采集到人体数据，进行动静态分析。</li>
+            </ul>
+          </div>
+          <div class="span4 pull-right login-form">
+            <form>
+              <h4>登陆希盟云服务平台</h4>
+              <div class="form-group">
+                <i class="login-username"></i>
+                <input type="text" required="required" tabindex="1" placeholder="邮箱地址/手机号码" class="input-area" id="username" name="username">
+              </div>
+              <div class="form-group">
+                <i class="login-password"></i>
+                <input type="password" required="required" tabindex="2" placeholder="登录密码" class="input-area" id="password" name="password">
+              </div>
+              <p class="forget-pd">
+                <a href="#">忘记登录密码？</a>
+              </p>
+              <input class="form-btn" value="立即登陆" id="loginBtn" type="submit">
+              <p class="register">
+                <a href="#">注册</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--介绍-->
+    <div class="container function-intro">
+      <h1>希盟云服务平台功能介绍</h1>
+    </div>
+
+    <!--页脚-->
+    <div class="footer">
+      <div class="footer-info">
+        <div class="container">
+          <div class="row">
+            <div class="span3">
+              <h3>订单服务</h3>
+              <ul>
+                <li><a href="#">预订指南</a></li>
+                <li><a href="#">支付方式</a></li>
+                <li><a href="#">送货政策</a></li>
+              </ul>
+            </div>
+            <div class="span3">
+              <h3>服务与支持</h3>
+              <ul>
+                <li><a href="#">售后服务</a></li>
+                <li><a href="#">常见问题</a></li>
+              </ul>
+            </div>
+            <div class="span3">
+              <h3>关于公司</h3>
+              <ul>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">加入我们</a></li>
+                <li><a href="#">联系我们</a></li>
+              </ul>
+            </div>
+            <div class="span3">
+              <h3>联系我们</h3>
+              <h2 class="phone">400-1010-995</h2>
+              <p class="tip">周一至周日 09：00-18：00（仅收市话费）</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>Copyright © 2007-2014 CIM TECHNOLOGY INC. All rights reserved.希盟（中国）科技有限公司</p>
+        <p>陕ICP备11013194号-1</p>
+      </div>
+    </div>
+
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
   </body>

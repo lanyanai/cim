@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>云平台——注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+      body{
+        background-color: #f9fbfc;
+      }
+      #user-menu .dropdown-toggle{
+        margin: 0;
+        border: none;
+        padding:29px 0;
+      }
+      .brand{
+        color: #37b0e9;
+        font-size:20px;
+        line-height: 30px;
+      }
+
+      /*step head style*/
+      #registerTab{
+        position: relative;
+        color: #283e56;
+        font-family: "microsoft yahei";
+      }
+      .register-mask {
+        background-color: #eef4f8;
+        height: 60px;
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+      }
+      #registerTabNav{
+        position: relative;
+        list-style-type: none;
+      }
+      #registerTabNav>li{
+        float:left;
+      }
+      #registerTabNav>li>a{
+        line-height: 60px;
+        padding: 0 20px;
+        text-decoration: none;
+        color: #283e56;
+        display: block;
+        overflow: hidden;
+        position: relative;
+      }
+      #registerTabNav>li.active>a{
+        background-color: #e1ebf1;
+      }
+      #registerTabNav>li>a>span{
+        display: block;
+        float:left;
+      }
+      #registerTabNav>li>a>.step{
+        background: url("img/step.png") center no-repeat;
+        width: 24px;
+        height: 100%;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+      }
+      #registerTabNav>li>a>.caret{
+        position: absolute;
+        border-bottom:4px transparent solid;
+        border-top-color: transparent;
+        bottom:0;
+        left: 50%;
+      }
+      #registerTabNav>li.active>a>.caret{
+        border-bottom-color: #f9fbfc;
+      }
+      #registerTabNav>li.active>a>.step{
+        background-image:url("img/step-active.png");
+      }
+      #registerTabNav>li>a>.content{
+        margin-left: 10px;
+      }
+
+      /*register tab style*/
+      .control-group .input-area{
+        padding: 12px 10px 12px 40px;
+        display: block;
+        margin:0 auto 20px;
+      }
+      .control-group i{
+        display: block;
+        position: absolute;
+        top:13px;
+        left: 10px;
+        width: 24px;
+        height: 20px;
+      }
+      .icon-user{
+        background: url("img/user.png") center no-repeat;
+      }
+      .icon-lock{
+        background: url("img/lock.png") center no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <!--导航-->
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <span class="brand" href="#">
+            <img src="img/logo.jpg">
+            &nbsp;&nbsp;希盟云服务平台
+          </span>
+          <ul class="nav pull-right">
+            <li class="dropdown" id="user-menu">
+              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">ximeng@gmial.com<b class="caret"></b></a>
+              <ul role="menu" class="dropdown-menu">
+                <li role="presentation"><a href="#" tabindex="-1" role="menuitem">用户资料</a></li>
+                <li role="presentation"><a href="#" tabindex="-1" role="menuitem">基本设置</a></li>
+                <li role="presentation"><a href="#" tabindex="-1" role="menuitem">退出登录</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!--分步-->
+    <div id="registerTab">
+      <div class="register-mask"></div>
+      <ul class="nav-tab container" id="registerTabNav">
+        <li class="active">
+          <a data-toggle="tab" href="#step1">
+            <span class="step">1</span><span class="content">创建您的家庭账号</span><span class="caret"></span>
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#step2">
+            <span class="step">2</span><span class="content">填写个人信息</span><span class="caret"></span>
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#step3">
+            <span class="step">3</span><span class="content">创建成功</span><span class="caret"></span>
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#step4">
+            <span class="step">4</span><span class="content">填写其他家庭成员信息</span><span class="caret"></span>
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content container" id="registerTabContent">
+        <div class="tab-pane fade in active" id="step1">
+          <form class="form-horizontal">
+            <div class="control-group">
+              <label for="username" class="control-label">注册账号</label>
+              <div class="controls">
+                <i class="user"></i>
+                <input type="text" required="required" tabindex="1" placeholder="邮箱地址/手机号码" class="input-area" id="username" name="username">
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="password" class="control-label">密码</label>
+              <div class="controls">
+                <i class="lock"></i>
+                <input type="password" required="required" tabindex="2" placeholder="密码长度不小于8位" class="input-area" id="password" name="password">
+              </div>
+            </div>
+            <div class="control-group">
+              <label for="password" class="control-label">重复密码</label>
+              <div class="controls">
+                <i class="lock"></i>
+                <input type="password" required="required" tabindex="3" placeholder="与上述密码一致" class="input-area" id="repeatPassword" name="repeatPassword">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="tab-pane" id="step2">
+          step2
+        </div>
+        <div class="tab-pane" id="step3">
+          step3
+        </div>
+        <div class="tab-pane" id="step4">
+          step4
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script>
+      $(function()
+      {
+        $("#registerTabNav a").click(function()
+        {
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>
