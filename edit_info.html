@@ -401,6 +401,7 @@
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/bootstrap-datepicker.zh-CN.js"></script>
+    <script src="js/jquery.upload.v2.js"></script>
     <script>
       $(function()
       {
@@ -410,6 +411,21 @@
           language: "zh-CN",
           autoclose: true,
           todayHighlight: true
+        });
+
+        $("#modifyHeadBtn").upload({
+          action: "url/up.php", //上传地址
+          fileName: "file",    //文件名称。用于后台接收
+          params: {
+
+          },         //参数
+          accept: ".jpg,.png",     //文件类型
+          complete: function () {  //渲染完成
+
+          },
+          submit: function (data) {   //提交之后
+            alert("submit");
+          }
         });
       });
     </script>

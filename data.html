@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+  <head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>云平台——数据展示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+      body{
+        background-color: #f9fbfc;
+      }
+      #user-menu .dropdown-toggle{
+        margin: 0;
+        border: none;
+        padding:29px 0;
+      }
+      .brand{
+        color: #37b0e9;
+        font-size:20px;
+        line-height: 30px;
+      }
+      .brand img{
+        float:left;
+        display: block;
+      }
+      /*step head style*/
+      #memberTab{
+        position: relative;
+        color: #283e56;
+        font-family: "microsoft yahei";
+      }
+      .member-mask {
+        background-color: #eef4f8;
+        height: 60px;
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+      }
+      #memberTabNav{
+        position: relative;
+        list-style-type: none;
+        margin-bottom: 50px;
+      }
+      #memberTabNav>li{
+        float:left;
+      }
+      #memberTabNav>li>a{
+        line-height: 60px;
+        padding: 0 20px;
+        text-decoration: none;
+        color: #283e56;
+        display: block;
+        overflow: hidden;
+        position: relative;
+      }
+      #memberTabNav>li.active>a{
+        background-color: #e1ebf1;
+      }
+      #memberTabNav>li>a>span{
+        display: block;
+        float:left;
+      }
+      .member-head{
+        float: left;
+        display: block;
+        width: 30px;
+        height: 30px;
+        margin-top: 15px;
+        border-radius: 15px;
+      }
+      .plus{
+        font-size: 20px;
+        font-weight: 900;
+        color: #747d87;
+      }
+      #memberTabNav>li>a>.caret{
+        position: absolute;
+        border-bottom:4px transparent solid;
+        border-top-color: transparent;
+        bottom:0;
+        left: 50%;
+      }
+      #memberTabNav>li.active>a>.caret{
+        border-bottom-color: #f9fbfc;
+      }
+      #memberTabNav>li.active>a>.step{
+        background-image:url("img/step-active.png");
+      }
+      #memberTabNav>li>a>.content{
+        margin-left: 5px;
+      }
+
+      /*member tab content style*/
+      #memberTabContent{
+        margin-bottom: 50px;
+      }
+
+      /*detail data tab nav style*/
+      #member1DataTabNav{
+        border-bottom: 1px solid #eef4f8;
+        padding-bottom: 10px;
+        margin-bottom:0;
+      }
+      #member1DataTabNav>li{
+        float:left;
+        list-style: none;
+      }
+      #member1DataTabNav>li.active>a{
+        background-color: #37b0e9;
+        color: #fff;
+      }
+      #member1DataTabNav>li>a{
+        line-height: 33px;
+        padding: 0 30px;
+        text-decoration: none;
+        display: block;
+        border-radius: 4px;
+      }
+
+      #member1DataTabContent{
+        margin:21px 0 50px
+      }
+      #member1DataTabContent>.tab-pane{
+        overflow: hidden;
+      }
+
+      /*general data tab style*/
+      .left-data{
+        float:left;
+        width: 472px;
+      }
+      .right-data{
+        float:right;
+        width: 472px;
+      }
+      .data-area{
+        width: 470px;
+        border: 1px solid #eef4f8;
+        background-color: #fff;
+        margin-bottom: 20px;
+      }
+      .area-head{
+        padding: 22px;
+        border-bottom: 1px solid #eef4f8;
+        overflow: hidden;
+      }
+      .area-head h5{
+        margin: 0;
+        line-height: 26px;
+        float: left;
+      }
+      .area-head p{
+        margin:0;
+        float:right;
+        color: #a6adb5;
+      }
+      .data-item{
+        border-bottom: 1px solid #eef4f8;
+        overflow: hidden;
+        padding: 22px;
+      }
+      .data-item-head{
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+      .data-item-head h4{
+        margin:0;
+        float:left;
+        font-size: 16px;
+        line-height: 26px;
+      }
+      .data-item-icon{
+        display: block;
+        float:left;
+        height:26px;
+        width: 20px;
+      }
+      .alert-item .data-item-icon{
+        background: url("img/alert.jpg") center no-repeat;
+      }
+      .alert-item h4{
+        color: #cc3333;
+      }
+      .warning-item .data-item-icon{
+        background: url("img/warning.jpg") center no-repeat;
+      }
+      .warning-item h4{
+        color: #f90;
+      }
+      .ok-item .data-item-icon{
+        background: url("img/ok.jpg") center no-repeat;
+      }
+      .ok-item h4{
+        color: #28c44d;
+      }
+      .more-detail{
+        display: block;
+        float:left;
+        margin-left: 20px;
+        line-height: 26px;
+        padding: 0 13px;
+        text-decoration: none;
+        background-color: #eef4f8;
+        border-radius: 4px;
+        cursor: pointer;
+        color: #283e56;
+      }
+      .more-detail:hover{
+        text-decoration: none;
+        background-color: #f0f7fb;
+        color: #283e56;
+      }
+      .more-detail:active{
+        background-color: #e3edf3;
+        color: #283e56;
+      }
+      .data-item-num{
+        display: block;
+        float: right;
+        color: #a6adb5;
+        line-height: 26px;
+        margin-right: 10px;
+      }
+      .data-item-time{
+        display: block;
+        float: right;
+        color: #a6adb5;
+        line-height: 26px;
+        font-size: 12px;
+      }
+      .data-item-con p{
+        line-height: 24px;
+        font-size: 12px;
+        margin:0;
+      }
+
+      /*blood data style*/
+      #member1BloodData .more-detail{
+        float: right;
+      }
+      .blood-data{
+        overflow: hidden;
+      }
+      .blood-data-tit{
+        overflow: hidden;
+        margin-bottom: 5px;
+      }
+      .blood-data-num{
+        font-size:40px;
+        line-height: 52px;
+        float:left;
+        display: block;
+      }
+      .blood-data-unit{
+        line-height: 26px;
+        margin-top: 20px;
+        display: block;
+        float:left;
+        color: #a6adb5;
+      }
+      .blood-data-time{
+        float:right;
+      }
+      .blood-data-time p{
+        float: none;
+        line-height: 26px;
+      }
+      #member1BloodGraph{
+        height: 300px;
+        margin: 20px 5px;
+      }
+
+      /*footer style*/
+      .footer{
+        color: #283e56;
+        font-size: 12px;
+      }
+      .footer-info{
+        padding: 25px 0;
+        background-color: #f1f5f7;
+      }
+      .footer-info h3{
+        font-size: 18px;
+        line-height: 34px;
+        border-bottom: 1px solid #dfe5e8;
+        margin:0;
+      }
+      .footer-info ul{
+        margin:20px 0 10px 15px;
+      }
+      .footer-info li{
+        margin-bottom:15px;
+      }
+      .footer-info li a{
+        color: #283e56;
+      }
+      .footer-info h2.phone{
+        font-size: 24px;
+        font-weight: normal;
+      }
+      .footer-copy{
+        text-align: center;
+        padding:20px 0 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <!--导航-->
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container">
+              <span class="brand">
+                <img src="img/logo.jpg">
+                &nbsp;&nbsp;希盟云服务平台
+              </span>
+          <ul class="nav pull-right">
+            <li class="dropdown" id="user-menu">
+              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">ximeng@gmial.com<b class="caret"></b></a>
+              <ul role="menu" class="dropdown-menu">
+                <li role="presentation"><a href="#" tabindex="-1" role="menuitem">用户资料</a></li>
+                <li role="presentation"><a href="#" tabindex="-1" role="menuitem">基本设置</a></li>
+                <li role="presentation"><a href="#" tabindex="-1" role="menuitem">退出登录</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!--家庭成员tab-->
+    <div id="memberTab">
+      <div class="member-mask"></div>
+      <ul class="nav-tab container" id="memberTabNav">
+        <li class="active">
+          <a data-toggle="tab" href="#member1">
+            <img class="member-head" src="img/head1.jpg"><span class="content">李小溪</span><span class="caret"></span>
+          </a>
+        </li>
+        <li>
+          <a data-toggle="tab" href="#member2">
+            <img class="member-head" src="img/head2.jpg"><span class="content">王达浒</span><span class="caret"></span>
+          </a>
+        </li>
+        <li>
+          <a href="#" id="addMember">
+            <span class="plus">+</span><span class="content">添加成员</span>
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content container" id="memberTabContent">
+        <div class="tab-pane fade in active" id="member1">
+          <ul class="nav-tab container" id="member1DataTabNav">
+            <li class="active">
+              <a data-toggle="tab" href="#member1General">综合健康指标</a>
+            </li>
+            <li>
+              <a data-toggle="tab" href="#member1Detail">详细数据</a>
+            </li>
+            <li>
+              <a data-toggle="tab" href="#member1Exception">异常情况</a>
+            </li>
+            <li>
+              <a data-toggle="tab" href="#member1AddData">手动添加数据</a>
+            </li>
+          </ul>
+          <div class="tab-content container" id="member1DataTabContent">
+            <div class="tab-pane fade in active" id="member1General">
+              <div class="left-data">
+                <div class="data-area" id="member1Overall">
+                  <div class="area-head">
+                    <h5>我的整体健康情况</h5>
+                    <p>根据最近一次测量</p>
+                  </div>
+                  <div class="data-item">
+                    <div class="data-item-head warning-item">
+                      <h4><span class="data-item-icon"></span>血压最近7天无测量</h4>
+                    </div>
+                    <div class="data-item-con">
+                      <p>
+                        最近一次测量是在15天前，让我们积极关注血压情况。
+                      </p>
+                    </div>
+                  </div>
+                  <div class="data-item">
+                    <div class="data-item-head alert-item">
+                      <h4><span class="data-item-icon"></span>血压偏低</h4>
+                      <a class="more-detail" data-target="lood">查看详细</a>
+                      <span class="data-item-time">2014-08-09</span>
+                      <span class="data-item-num">74mmHg/55mmHg</span>
+                    </div>
+                    <div class="data-item-con">
+                      <p>
+                        生活要有规律，防止过度疲劳，因为嫉妒疲劳会使血压降的更低，适当加锻炼，提高身体素质，改善神经、血管的调节能力，加速血液循环，减少直立性低血压的发作。每餐不宜吃的过饱。低血压的老年人每日清晨可饮茶饮酒。
+                      </p>
+                    </div>
+                  </div>
+                  <div class="data-item">
+                    <div class="data-item-head alert-item">
+                      <h4><span class="data-item-icon"></span>心率过缓</h4>
+                      <span class="data-item-time">2014-08-09</span>
+                      <span class="data-item-num">55bpm</span>
+                    </div>
+                    <div class="data-item-con">
+                      <p>
+                        防止过度疲劳，因为嫉妒疲劳会使血压降的更低，适当加强炼，提高身体素质，改善神经、血管的调节能力，加速血液循环，减少直立性低血压的发作。每餐不宜吃的过饱。低血压的老年人每日清晨可饮茶饮酒。
+                      </p>
+                    </div>
+                  </div>
+                  <div class="data-item">
+                    <div class="data-item-head warning-item">
+                      <h4><span class="data-item-icon"></span>睡眠不足</h4>
+                      <span class="data-item-time">2014-08-09</span>
+                      <span class="data-item-num">5小时12分钟</span>
+                    </div>
+                    <div class="data-item-con">
+                      <p>
+                        成年人参考标准睡眠7-9小时。<a href="#">了解更多&gt;&gt;</a>
+                      </p>
+                      <p>
+                        固定睡觉和起床时间。保证卧室是安静、黑暗、放松的环境。避免在睡觉前大量进食。适当的运动对于提升睡眠质量有一定帮助。<a href="#">更多建议&gt;&gt;</a>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="data-item">
+                    <div class="data-item-head ok-item">
+                      <h4><span class="data-item-icon"></span>理想运动状态</h4>
+                      <span class="data-item-time">2014-08-09</span>
+                      <span class="data-item-num">1905cal</span>
+                    </div>
+                    <div class="data-item-con">
+                      <p>
+                        很棒！请继续保持~
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="data-area" id="member1BloodData">
+                  <div class="area-head">
+                    <div class="blood-data-tit">
+                      <h5>我的血压趋势</h5>
+                      <a class="more-detail" data-target="blood">查看详细</a>
+                    </div>
+                    <div class="blood-data">
+                      <span class="blood-data-num">99 / 57</span>
+                      <span class="blood-data-unit">高压 / 低压（mmHg）</span>
+                      <div class="blood-data-time">
+                        <p>2014-08-09</p>
+                        <p>周一 15：06</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="member1BloodGraph">
+                  </div>
+                </div>
+                <div class="data-area" id="member1SportData">
+                  <div class="area-head">
+                    <div class="sport-data-tit">
+                      <h5>我的运动分析</h5>
+                      <a class="more-detail" data-target="sport">查看详细</a>
+                    </div>
+                    <div class="blood-data">
+                      <span class="blood-data-num">99 / 57</span>
+                      <span class="blood-data-unit">高压 / 低压（mmHg）</span>
+                      <div class="blood-data-time">
+                        <p>2014-08-09</p>
+                        <p>周一 15：06</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="member1SportGraph">
+                  </div>
+                </div>
+              </div>
+              <div class="right-data">
+                <div class="data-area" id="member1TemperatureData">
+
+                </div>
+                <div class="data-area" id="member1HeartData">
+
+                </div>
+                <div class="data-area" id="member1SleepData">
+
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="member1Detail">
+              详细数据
+            </div>
+            <div class="tab-pane" id="member1Exception">
+              异常情况
+            </div>
+            <div class="tab-pane" id="member1AddData">
+              添加数据
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="member2">
+          成员2
+        </div>
+      </div>
+    </div>
+
+
+    <!--页脚-->
+    <div class="footer">
+      <div class="footer-info">
+        <div class="container">
+          <div class="row">
+            <div class="span3">
+              <h3>订单服务</h3>
+              <ul>
+                <li><a href="#">预订指南</a></li>
+                <li><a href="#">支付方式</a></li>
+                <li><a href="#">送货政策</a></li>
+              </ul>
+            </div>
+            <div class="span3">
+              <h3>服务与支持</h3>
+              <ul>
+                <li><a href="#">售后服务</a></li>
+                <li><a href="#">常见问题</a></li>
+              </ul>
+            </div>
+            <div class="span3">
+              <h3>关于公司</h3>
+              <ul>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">加入我们</a></li>
+                <li><a href="#">联系我们</a></li>
+              </ul>
+            </div>
+            <div class="span3">
+              <h3>联系我们</h3>
+              <h2 class="phone">400-1010-995</h2>
+              <p class="tip">周一至周日 09：00-18：00（仅收市话费）</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>Copyright © 2007-2014 CIM TECHNOLOGY INC. All rights reserved.希盟（中国）科技有限公司</p>
+        <p>陕ICP备11013194号-1</p>
+      </div>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+    <script src="js/jquery.flot.js"></script>
+    <script src="js/jquery.flot.time.js"></script>
+    <script src="js/jquery.flot.stack.js"></script>
+    <script>
+      $(function()
+      {
+        //血压
+        //低压数据
+        var d21 = [
+          [new Date(2014, 6, 6).getTime(), 56.2],
+          [new Date(2014, 6, 8).getTime(), 57.7],
+          [new Date(2014, 6, 10).getTime(), 60.9],
+          [new Date(2014, 6, 12).getTime(), 58.0],
+          [new Date(2014, 6, 14).getTime(), 58.5],
+          [new Date(2014, 6, 16).getTime(), 57.0],
+          [new Date(2014, 6, 18).getTime(), 61.2],
+          [new Date(2014, 6, 20).getTime(), 62.2],
+          [new Date(2014, 6, 21).getTime(), 60.4],
+          [new Date(2014, 6, 22).getTime(), 59.8]
+        ];
+        //高压数据
+        var d22 = [
+          [new Date(2014, 6, 6).getTime(), 99.2],
+          [new Date(2014, 6, 8).getTime(), 100.7],
+          [new Date(2014, 6, 10).getTime(), 98.9],
+          [new Date(2014, 6, 12).getTime(), 97.0],
+          [new Date(2014, 6, 14).getTime(), 99.5],
+          [new Date(2014, 6, 16).getTime(), 101.0],
+          [new Date(2014, 6, 18).getTime(), 102.2],
+          [new Date(2014, 6, 20).getTime(), 100.2],
+          [new Date(2014, 6, 21).getTime(), 96.4],
+          [new Date(2014, 6, 22).getTime(), 95.8]
+        ];
+        function generateBlood(axes) {
+
+          var markings = [],
+              min = axes.yaxis.min,
+              max = axes.yaxis.max;
+
+          var step = 4;
+
+          for(var i = min; i < max; i += step)
+          {
+            if(i%20 != 0)
+            {
+              markings.push({yaxis: {from: i, to: i}, color:"#eef4f8"});
+            }
+          }
+
+          return markings;
+        }
+
+        $.plot("#member1BloodGraph", [{
+          data: d21,
+          points: { show: true, fill: true, fillColor:"#37b0e9", lineWidth:0, radius:5, shadowSize:0},
+          lines:{show:true, lineWidth:2},
+          label:"低压",
+          shadowSize:0,
+          color:"#37b0e9"
+        },{
+          data: d22,
+          points: { show: true, fill: true, fillColor:"#f57574", lineWidth:0, radius:5, shadowSize:0},
+          lines:{show:true, lineWidth:2},
+          label:"高压",
+          shadowSize:0,
+          color:"#f57574"
+        }],{
+          legend:{
+            show:false
+          },
+          xaxis:{
+            mode:"time",
+            tickSize: [7, "day"],
+            tickLength: 5,
+            timeformat: "%m-%d"
+          },
+          yaxis:{
+            min:40,
+            max:120,
+            tickSize:20
+          },
+          grid:{
+            borderWidth: 0,
+            hoverable: true,
+            clickable: true,
+            tickColor: "#a6adb5",
+            markings: generateBlood
+          }
+        });
+
+        $("<div id='tooltip2'></div>").css({
+          position: "absolute",
+          display: "none",
+          padding: "2px",
+          opacity: 0.80,
+          color:"#fff"
+        }).appendTo("body");
+
+        $("#member1BloodGraph").bind("plothover", function (event, pos, item) {
+          if (item) {
+            var y = item.datapoint[1].toFixed(1);
+
+            if(item.seriesIndex == 0){
+              $("#tooltip2").html("低压" + y + "mmHg").css({top: item.pageY+5, left: item.pageX+5, "background-color": $.color.parse(item.series.points.fillColor).scale('rgb', 0.5).toString()}).fadeIn(200);
+            }
+            else if(item.seriesIndex == 1){
+              $("#tooltip2").html("高压" + y + "mmHg").css({top: item.pageY+5, left: item.pageX+5, "background-color": $.color.parse(item.series.points.fillColor).scale('rgb', 0.5).toString()}).fadeIn(200);
+            }
+
+          } else {
+            $("#tooltip2").hide();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
