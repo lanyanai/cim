@@ -2,10 +2,11 @@
 <html>
   <head lang="zh-CN">
     <meta charset="UTF-8">
-    <title>云平台——注册</title>
+    <title>基本设置——编辑成员资料</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/datepicker.css" rel="stylesheet">
     <style>
       body{
         background-color: #f9fbfc;
@@ -25,11 +26,6 @@
         display: block;
       }
       /*setting tab nav style*/
-      #settingTab{
-        position: relative;
-        color: #283e56;
-        font-family: "microsoft yahei";
-      }
       #memberNav{
         position: relative;
         list-style-type: none;
@@ -41,8 +37,18 @@
         float:left;
         line-height: 30px;
         padding: 0 10px;
-        border: 1px solid #37b0e9;
-        border-radius: 2px;
+        border-top: 1px solid #37b0e9;
+        border-bottom: 1px solid #37b0e9;
+        border-left: 1px solid #37b0e9;
+      }
+      #memberNav>li.first{
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+      #memberNav>li.last{
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-right: 1px solid #37b0e9;
       }
       #memberNav>li.active{
         background-color: #37b0e9;
@@ -68,61 +74,10 @@
         margin: 0;
       }
 
-      /*my device style*/
-      #deviceList{
-        margin:0;
-        list-style: none;
-      }
-      #deviceList li{
-        overflow: hidden;
-        position: relative;
-        padding: 40px 0;
-        border-bottom: 1px solid #eef4f8;
-      }
-      #deviceList li.last{
-        border-bottom: none;
-      }
-      #deviceList h4{
-        font-size: 18px;
-        font-weight: normal;
-        position: absolute;
-        top:50%;
-        line-height: 30px;
-        height: 30px;
-        left:30px;
-        width: 90px;
-        overflow: hidden;
-        margin-top: -15px;
-      }
-      .device-detail{
-        margin-left:160px;
-      }
-      .device-detail p{
-        margin:20px 0;
-        height: 20px;
-        overflow: hidden;
-      }
-      .device-tit{
-        text-align: right;
-        display: block;
-        width: 130px;
-        float: left;
-        overflow: hidden;
-      }
-      .device-con{
-        display: block;
-        float:left;
-        margin-left: 20px;
-      }
-
-      /*account setting style*/
-      .modify-form{
+      /*member setting style*/
+      #modifyInfoForm{
         margin:40px 0 100px;
-      }
-      #account{
-        padding-left: 110px;
-        line-height: 44px;
-        margin:0;
+        position: relative;
       }
       .input-group {
         position: relative;
@@ -157,19 +112,38 @@
         z-index: 10;
       }
       .input-group .input-area{
-        padding: 12px 10px 12px 40px;
-        *padding: 10px 10px 10px 40px;
+        padding: 12px 10px 12px 10px;
+        *padding: 10px 10px 10px 10px;
         display: block;
         margin:0 auto;
-        width: 248px;
+        width: 278px;
         position: relative;
         left: 0;
+      }
+      #memberSetting .controls .radio {
+        padding: 0;
+        margin: 0;
+        line-height: 44px;
+        float: left;
+      }
+      .controls .radio input[type="radio"] {
+        float: none;
+        margin: 0;
+        width: 50px;
+        line-height: 44px;
+        height: 20px;
       }
       .input-group .tip {
         float: left;
         margin-left: 20px;
         color: #f57574;
         line-height: 44px;
+      }
+      .input-group .add-on {
+        float: left;
+        display: block;
+        line-height: 44px;
+        margin-left: 10px;
       }
       .icon-lock {
         background: url("img/lock.png") center no-repeat;
@@ -200,9 +174,46 @@
         background-color: #e5eef4;
         text-decoration: none;
       }
+      #modifySubmitBtn {
+        float: left;
+        padding: 0 80px;
+        margin-left: 96px;
+      }
+      #deleteBtn{
+        background: url("img/cross.png") 4px center no-repeat;
+        padding-left: 20px;
+        line-height: 44px;
+        display: block;
+        float: left;
+        margin-left: 20px;
+        color: #37b0e9;
+        text-decoration: none;
+      }
+
+      #modifyHead{
+        position: absolute;
+        right: 200px;
+        top:0;
+        width: 130px;
+        border: 1px solid #e1ebf1;
+        padding: 5px;
+      }
+      #modifyHead img{
+        display: block;
+        width: 130px;
+        height: 130px;
+      }
+      #modifyHeadBtn{
+        display: block;
+        margin: 5px 5px 0;
+        padding-left: 30px;
+        background: url("img/camera.jpg") 5px center no-repeat;
+        color: #37b0e9;
+        text-decoration: none;
+      }
 
       /*tab content style*/
-      #settingTabContent{
+      #modifyInfoForm{
         margin-bottom: 50px;
       }
 
@@ -264,60 +275,83 @@
     </div>
 
     <!--基本设置-->
-    <div class="container" id="settingTab">
+    <div class="container" id="memberSetting">
       <div class="tab-head">
-        <p id="settingTit">基本设置-便捷成员资料</p>
+        <p id="settingTit">基本设置-编辑成员资料</p>
         <ul id="memberNav">
-          <li class="active">
+          <li class="active first">
             <a href="#">
-              我的设备
+              那英
             </a>
           </li>
           <li>
             <a href="#">
-              账号设置
+              汪峰
+            </a>
+          </li>
+          <li class="last">
+            <a href="#">
+              周鸿伟
             </a>
           </li>
         </ul>
       </div>
 
-      <div class="tab-content" id="settingTabContent">
-        <form class="modify-form">
-          <div class="input-group">
-            <label class="control-label">账号</label>
-            <p id="account">ximeng@gmail.com</p>
+      <form id="modifyInfoForm">
+        <div class="input-group">
+          <label for="modifyMemberName" class="control-label">姓名</label>
+          <div class="controls">
+            <input type="text" required="required" tabindex="1" placeholder="请填写成员姓名" class="input-area" id="modifyMemberName" name="modifyMemberName">
           </div>
-          <div class="input-group">
-            <label for="curPassword" class="control-label">当前密码</label>
-            <div class="controls">
-              <i class="icon-lock"></i>
-              <input type="password" required="required" tabindex="1" placeholder="请输入当前密码" class="input-area" id="curPassword" name="curPassword">
-            </div>
-            <p class="tip"></p>
+          <p class="tip">提示信息</p>
+        </div>
+        <div class="input-group">
+          <label for="modifyMemberBirthday" class="control-label">生日</label>
+          <div class="controls">
+            <input type="text" required="required" tabindex="1" placeholder="例：1990-02-10" class="input-area" id="modifyMemberBirthday" name="modifyMemberBirthday">
           </div>
-          <div class="input-group">
-            <label for="password" class="control-label">新的密码</label>
-            <div class="controls">
-              <i class="icon-lock"></i>
-              <input type="password" required="required" tabindex="1" placeholder="请输入新的密码" class="input-area" id="password" name="password">
-            </div>
-            <p class="tip"></p>
+          <p class="tip">提示信息</p>
+        </div>
+        <div class="input-group">
+          <label class="control-label">性别</label>
+          <div class="controls">
+            <label class="radio">
+              <input type="radio" checked="" value="male" id="modifyMale" name="modifySexRadios">
+              男
+            </label>
+            <label class="radio">
+              <input type="radio" value="female" id="modifyFemale" name="modifySexRadios">
+              女
+            </label>
           </div>
-          <div class="input-group">
-            <label for="repeatPassword" class="control-label">重复密码</label>
-            <div class="controls">
-              <i class="icon-lock"></i>
-              <input type="password" required="required" tabindex="2" placeholder="与上述密码一致" class="input-area" id="repeatPassword" name="repeatPassword">
-            </div>
-            <p class="tip"></p>
+          <p class="tip"></p>
+        </div>
+        <div class="input-group">
+          <label for="modifyMemberWeight" class="control-label">体重</label>
+          <div class="controls">
+            <input type="number" required="required" tabindex="1" placeholder="例：50" class="input-area" id="modifyMemberWeight" name="modifyMemberWeight">
           </div>
-          <div class="input-group">
-            <div class="controls">
-              <a href="#" id="modifyBtn" class="form-btn">确认修改</a>
-            </div>
+          <span class="add-on">kg</span>
+          <p class="tip">提示信息</p>
+        </div>
+        <div class="input-group">
+          <label for="modifyMemberHeight" class="control-label">身高</label>
+          <div class="controls">
+            <input type="number" required="required" tabindex="1" placeholder="例：180" class="input-area" id="modifyMemberHeight" name="memberHeight">
           </div>
-        </form>
-      </div>
+          <span class="add-on">cm</span>
+          <p class="tip">提示信息</p>
+        </div>
+        <div id="modifyHead">
+          <img src="img/head.jpg">
+          <a id="modifyHeadBtn" href="#">修改个人头像</a>
+        </div>
+
+        <div class="input-group">
+          <a href="#" id="modifySubmitBtn" class="form-btn">确认修改</a>
+          <a href="#" id="deleteBtn">删除此用户</a>
+        </div>
+      </form>
     </div>
 
 
@@ -365,10 +399,18 @@
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/bootstrap-datepicker.zh-CN.js"></script>
     <script>
       $(function()
       {
-
+        $("#modifyMemberBirthday").datepicker({
+          format: "yyyy-mm-dd",
+          weekStart: 1,
+          language: "zh-CN",
+          autoclose: true,
+          todayHighlight: true
+        });
       });
     </script>
   </body>

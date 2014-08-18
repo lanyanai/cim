@@ -2,7 +2,7 @@
 <html>
   <head lang="zh-CN">
     <meta charset="UTF-8">
-    <title>云平台——注册</title>
+    <title>账号设置</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -41,8 +41,18 @@
         float:left;
         line-height: 30px;
         padding: 0 10px;
-        border: 1px solid #37b0e9;
-        border-radius: 2px;
+        border-top: 1px solid #37b0e9;
+        border-bottom: 1px solid #37b0e9;
+        border-left: 1px solid #37b0e9;
+      }
+      #settingTabNav>li.first{
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+      #settingTabNav>li.last{
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-right: 1px solid #37b0e9;
       }
       #settingTabNav>li.active{
         background-color: #37b0e9;
@@ -268,12 +278,12 @@
       <div class="tab-head">
         <p id="settingTit">基本设置</p>
         <ul class="nav-tab" id="settingTabNav">
-          <li class="active">
+          <li class="active first">
             <a data-toggle="tab" href="#myDevice">
               我的设备
             </a>
           </li>
-          <li>
+          <li class="last">
             <a data-toggle="tab" href="#accountSetting">
               账号设置
             </a>
