@@ -980,6 +980,7 @@
                       <a data-toggle="tab" href="#member1Detail">按月</a>
                     </li>
                   </ul>
+                  <div id="calendar"></div>
                 </div>
                 <div class="tab-pane" id="member1DetailTem">
                   体温
@@ -1053,10 +1054,12 @@
     <script src="js/jquery.flot.time.js"></script>
     <script src="js/jquery.flot.stack.js"></script>
     <script src="js/jquery.flot.pie.js"></script>
+    <script src="js/moment.js"></script>
     <script src="js/fullcalendar.js"></script>
     <script>
       $(function()
       {
+        $("#calendar").fullCalendar();
         //血压
         //低压数据
         var d21 = [
