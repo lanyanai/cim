@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/fullcalendar.css" rel="stylesheet">
     <style>
       body{
         background-color: #f9fbfc;
@@ -32,16 +33,13 @@
       }
       .member-mask {
         background-color: #eef4f8;
-        height: 60px;
-        position: absolute;
-        top:0;
-        left: 0;
         width: 100%;
+        margin-bottom: 50px;
       }
       #memberTabNav{
         position: relative;
         list-style-type: none;
-        margin-bottom: 50px;
+        margin-bottom: 0;
       }
       #memberTabNav>li{
         float:left;
@@ -119,7 +117,7 @@
         border-radius: 4px;
       }
 
-      #member1DataTabContent{
+      #member1General{
         margin:21px 0 50px
       }
       #member1DataTabContent>.tab-pane{
@@ -237,39 +235,362 @@
       }
 
       /*blood data style*/
-      #member1BloodData .more-detail{
+      .blood-data-tit .more-detail,
+      .sport-data-tit .more-detail,
+      .tem-data-tit .more-detail,
+      .heart-data-tit .more-detail,
+      .sleep-data-tit .more-detail{
         float: right;
       }
-      .blood-data{
+      .blood-data,
+      .heart-data{
         overflow: hidden;
       }
-      .blood-data-tit{
+      .blood-data-tit,
+      .sport-data-tit,
+      .tem-data-tit,
+      .heart-data-tit,
+      .sleep-data-tit{
         overflow: hidden;
         margin-bottom: 5px;
       }
-      .blood-data-num{
+      .blood-data-num,
+      .tem-data-num,
+      .heart-data-num{
         font-size:40px;
         line-height: 52px;
         float:left;
         display: block;
       }
-      .blood-data-unit{
+      .blood-data-unit,
+      .tem-data-unit,
+      .heart-data-unit{
         line-height: 26px;
         margin-top: 20px;
         display: block;
         float:left;
         color: #a6adb5;
       }
-      .blood-data-time{
+      .blood-data-time,
+      .tem-data-time,
+      .heart-data-time{
         float:right;
       }
-      .blood-data-time p{
+      .blood-data-time p,
+      .heart-data-time p{
         float: none;
         line-height: 26px;
       }
-      #member1BloodGraph{
+      #member1BloodGraph,
+      #member1SportGraph,
+      #member1TemGraph,
+      #member1HeartGraph,
+      #member1SleepGraph{
         height: 300px;
-        margin: 20px 5px;
+        margin: 20px 10px;
+      }
+
+      /*sport data style*/
+      .sport-data-time,
+      .sleep-data-time{
+        background-color: #eef4f8;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+      .prev-day{
+        position: absolute;
+        left: 0;
+        top:0;
+        height: 100%;
+        width: 38px;
+        background: url("img/left-blue.png") center no-repeat;
+      }
+      .next-day{
+        position: absolute;
+        right: 0;
+        top:0;
+        height: 100%;
+        width: 38px;
+        background: url("img/right-blue.png") center no-repeat;
+      }
+      .prev-day:hover,
+      .next-day:hover{
+        background-color:#e3edf3;
+      }
+      p.sport-cur-day,
+      p.sleep-cur-day{
+        float: none;
+        text-align: center;
+        color: #283e56;
+        font-size:12px;
+        line-height: 26px;
+      }
+      .sport-data-detail,
+      .sleep-data-detail{
+        position: relative;
+        height: 120px;
+        overflow: hidden;
+      }
+      p.sport-pace{
+        position: absolute;
+        top:0;
+        line-height: 120px;
+        left: 0;
+        float:none;
+        max-width: 150px;
+      }
+      .sport-pace-num{
+        font-size: 40px;
+        font-weight: bold;
+        color: #283e56;
+      }
+      .sport-pace-unit{
+        font-size: 22px;
+      }
+
+      #member1SportPie,
+      #member1SleepPie{
+        position: absolute;
+        top:8px;
+        left: 160px;
+        height: 106px;
+        width: 106px;
+      }
+      .sport-data-num,
+      .sleep-data-num{
+        position: absolute;
+        top:0;
+        right: 0;
+        max-width: 150px;
+        overflow: hidden;
+      }
+      p.data-con{
+        line-height: 20px;
+        color: #283e56;
+        font-size: 14px;
+        text-align: right;
+        float: none;
+      }
+      p.data-intro{
+        line-height: 18px;
+        margin-bottom: 2px;
+        float: none;
+        text-align: right;
+      }
+      p.data-per{
+        line-height: 120px;
+        font-size: 18px;
+        color: #37b0e9;
+        text-align: center;
+        float: none;
+        z-index: 100;
+        position: relative;
+      }
+      .sport-statics,
+      .sleep-statics{
+        overflow: hidden;
+        margin-bottom: 10px;
+      }
+      .sport-statics p,
+      .sleep-statics p{
+        float: left;
+        width: 33%;
+        text-align: center;
+        line-height: 26px;
+        overflow: hidden;
+        height: 26px;
+        margin: 0;
+      }
+      .sport-statics-tit,
+      .sleep-statics-tit{
+        font-size:12px;
+      }
+      .sport-statics-time,
+      .sleep-statics-time{
+        font-size: 14px;
+      }
+      .slight-sport .sport-statics-tit{
+        color: #28c44d;
+      }
+      .medium-sport .sport-statics-tit{
+        color: #fc0;
+      }
+      .intense-sport .sport-statics-tit{
+        color: #f57574;
+      }
+      .sport-per{
+        height: 10px;
+        overflow: hidden;
+        padding: 0 15px;
+        margin-bottom: 30px;
+      }
+      .slight-per,
+      .medium-per,
+      .intense-per{
+        float:left;
+        display: block;
+        height: 100%;
+      }
+      .slight-per{
+        background-color: #28c44d;
+      }
+      .medium-per{
+        background-color: #fc0;
+      }
+      .intense-per{
+        background-color: #f57574;
+      }
+
+      /*temperature data style*/
+      #member1TemTabNav{
+        position: relative;
+        list-style-type: none;
+        float:right;
+        margin: 0 30px 0 0;
+
+      }
+      #member1TemTabNav>li{
+        float:left;
+        line-height: 26px;
+        padding: 0 10px;
+        border-top: 1px solid #37b0e9;
+        border-bottom: 1px solid #37b0e9;
+        border-left: 1px solid #37b0e9;
+      }
+      #member1TemTabNav>li.first{
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+      #member1TemTabNav>li.last{
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-right: 1px solid #37b0e9;
+      }
+      #member1TemTabNav>li.active{
+        background-color: #37b0e9;
+      }
+      #member1TemTabNav>li>a{
+        text-decoration: none;
+        color: #37b0e9;
+        font-size: 14px;
+      }
+      #member1TemTabNav>li.active>a{
+        color: #fff;
+      }
+      #member1TemData .area-head{
+        border-bottom: none;
+      }
+      .tem-data{
+        overflow: hidden;
+        padding: 0 22px 10px;
+        border-bottom: 1px solid #eef4f8;
+      }
+      .tem-data-time p{
+        margin: 0;
+        float: none;
+        color: #a6adb5;
+        line-height: 26px;
+      }
+
+      /*sleep data style*/
+      .deep-sleep .sleep-statics-tit{
+        color: #007bb5;
+      }
+      .light-sleep .sleep-statics-tit{
+        color: #37b0e9;
+      }
+      .wake-sleep .sleep-statics-tit{
+        color: #86e6fa;
+      }
+      .data-sum{
+        margin:36px auto;
+      }
+      .data-sum p{
+        line-height: 24px;
+        text-align: center;
+        float: none;
+        color: #37b0e9;
+        font-size:12px;
+      }
+      .data-sum .data-per{
+        font-size: 18px;
+      }
+      .sleep-time{
+        position: absolute;
+        top:30px;
+        left: 0;
+        max-width: 150px;
+        overflow: hidden;
+      }
+      .sleep-time .sleep-time-con{
+        float:none;
+        line-height: 40px;
+        height: 40px;
+        overflow: hidden;
+        font-size: 24px;
+        color: #283e56;
+        font-weight: bold;
+      }
+      .sleep-time .sleep-time-tit{
+        float:none;
+        line-height: 20px;
+        height: 20px;
+        overflow: hidden;
+        font-size: 14px;
+      }
+      .sleep-per{
+        height: 10px;
+        overflow: hidden;
+        padding: 0 15px;
+        margin-bottom: 30px;
+      }
+      .deep-per,
+      .light-per,
+      .wake-per{
+        float:left;
+        display: block;
+        height: 100%;
+      }
+      .deep-per{
+        background-color: #007bb5;
+      }
+      .light-per{
+        background-color: #37b0e9;
+      }
+      .wake-per{
+        background-color: #86e6fa;
+      }
+
+      /*detail data nav style*/
+      #member1DetailTabNav{
+        overflow: hidden;
+        margin: 10px 0;
+        list-style: none;
+      }
+      #member1DetailTabNav>li{
+        line-height: 35px;
+        float:left;
+      }
+      #member1DetailTabNav>li>a{
+        font-size: 14px;
+        padding: 0 40px;
+        border-right:1px solid #a6adb5;
+        color: #283e56;
+        text-decoration: none;
+      }
+      #member1DetailTabNav>li.last>a{
+        border-right: none;
+      }
+      #member1DetailTabNav>li.active>a{
+        color: #37b0e9;
+      }
+
+      /*detail sleep data style*/
+      #member1DetailTabContent{
+        background-color: #fff;
+        border: 1px solid #eef4f8;
+        margin-bottom: 40px;
       }
 
       /*footer style*/
@@ -331,24 +652,25 @@
 
     <!--家庭成员tab-->
     <div id="memberTab">
-      <div class="member-mask"></div>
-      <ul class="nav-tab container" id="memberTabNav">
-        <li class="active">
-          <a data-toggle="tab" href="#member1">
-            <img class="member-head" src="img/head1.jpg"><span class="content">李小溪</span><span class="caret"></span>
-          </a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#member2">
-            <img class="member-head" src="img/head2.jpg"><span class="content">王达浒</span><span class="caret"></span>
-          </a>
-        </li>
-        <li>
-          <a href="#" id="addMember">
-            <span class="plus">+</span><span class="content">添加成员</span>
-          </a>
-        </li>
-      </ul>
+      <div class="member-mask">
+        <ul class="nav-tab container" id="memberTabNav">
+          <li class="active">
+            <a data-toggle="tab" href="#member1">
+              <img class="member-head" src="img/head1.jpg"><span class="content">李小溪</span><span class="caret"></span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#member2">
+              <img class="member-head" src="img/head2.jpg"><span class="content">王达浒</span><span class="caret"></span>
+            </a>
+          </li>
+          <li>
+            <a href="#" id="addMember">
+              <span class="plus">+</span><span class="content">添加成员</span>
+            </a>
+          </li>
+        </ul>
+      </div>
       <div class="tab-content container" id="memberTabContent">
         <div class="tab-pane fade in active" id="member1">
           <ul class="nav-tab container" id="member1DataTabNav">
@@ -458,35 +780,214 @@
                   <div class="area-head">
                     <div class="sport-data-tit">
                       <h5>我的运动分析</h5>
-                      <a class="more-detail" data-target="sport">查看详细</a>
+                      <a class="more-detail" href="javascript:;" data-target="sport">查看详细</a>
                     </div>
-                    <div class="blood-data">
-                      <span class="blood-data-num">99 / 57</span>
-                      <span class="blood-data-unit">高压 / 低压（mmHg）</span>
-                      <div class="blood-data-time">
+                    <div class="sport-data-time">
+                      <a href="javascript:;" class="prev-day"></a>
+                      <a href="javascript:;" class="next-day"></a>
+                      <p class="sport-cur-day">2014-08-09</p>
+                    </div>
+                    <div class="sport-data-detail">
+                      <p class="sport-pace">
+                        <span class="sport-pace-num">21000</span><span class="sport-pace-unit">步</span>
+                      </p>
+                      <div id="member1SportPie">
+                      </div>
+                      <div class="sport-data-num">
+                        <p class="data-con">1230Kcal</p>
+                        <p class="data-intro">总消耗卡路里</p>
+                        <p class="data-con">1160Kcal</p>
+                        <p class="data-intro">运动消耗卡路里</p>
+                        <p class="data-con">1.78Km</p>
+                        <p class="data-intro">运动距离</p>
+                      </div>
+                      <p class="data-per">75%</p>
+                    </div>
+                  </div>
+                  <div id="member1SportGraph">
+                  </div>
+                  <div class="sport-statics">
+                    <p class="slight-sport">
+                      <span class="sport-statics-tit">轻微运动</span>
+                      <span class="sport-statics-time">5小时4分钟</span>
+                    </p>
+                    <p class="medium-sport">
+                      <span class="sport-statics-tit">中等运动</span>
+                      <span class="sport-statics-time">16分钟</span>
+                    </p>
+                    <p class="intense-sport">
+                      <span class="sport-statics-tit">剧烈运动</span>
+                      <span class="sport-statics-time">58分钟</span>
+                    </p>
+                  </div>
+                  <p class="sport-per">
+                    <span class="slight-per" style="width: 22%;"></span>
+                    <span class="medium-per" style="width: 45%;"></span>
+                    <span class="intense-per" style="width: 33%;"></span>
+                  </p>
+                </div>
+              </div>
+              <div class="right-data">
+                <div class="data-area" id="member1TemData">
+                  <div class="area-head">
+                    <div class="tem-data-tit">
+                      <h5>我的体温趋势</h5>
+                      <a class="more-detail" data-target="tem">查看详细</a>
+                      <ul class="nav-tab" id="member1TemTabNav">
+                        <li class="active first">
+                          <a data-toggle="tab" href="#member1TemTab">
+                            体温数据
+                          </a>
+                        </li>
+                        <li class="last">
+                          <a data-toggle="tab" href="#member1PreTab">
+                            易孕期
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="tab-content">
+                    <div class="tab-pane in active" id="member1TemTab">
+                      <div class="tem-data">
+                        <span class="tem-data-num">37.6</span>
+                        <span class="tem-data-unit">℃</span>
+                        <div class="tem-data-time">
+                          <p>2014-08-09</p>
+                          <p>周一 15：06</p>
+                        </div>
+                      </div>
+                      <div id="member1TemGraph">
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="member1PreTab">
+                      易孕
+                    </div>
+                  </div>
+
+                </div>
+                <div class="data-area" id="member1HeartData">
+                  <div class="area-head">
+                    <div class="heart-data-tit">
+                      <h5>我的心率趋势</h5>
+                      <a class="more-detail" data-target="heart">查看详细</a>
+                    </div>
+                    <div class="heart-data">
+                      <span class="heart-data-num">69</span>
+                      <span class="heart-data-unit">bpm</span>
+                      <div class="heart-data-time">
                         <p>2014-08-09</p>
                         <p>周一 15：06</p>
                       </div>
                     </div>
                   </div>
-                  <div id="member1SportGraph">
+                  <div id="member1HeartGraph">
                   </div>
                 </div>
-              </div>
-              <div class="right-data">
-                <div class="data-area" id="member1TemperatureData">
-
-                </div>
-                <div class="data-area" id="member1HeartData">
-
-                </div>
                 <div class="data-area" id="member1SleepData">
-
+                  <div class="area-head">
+                    <div class="sleep-data-tit">
+                      <h5>我的睡眠分析</h5>
+                      <a class="more-detail" href="javascript:;" data-target="sleep">查看详细</a>
+                    </div>
+                    <div class="sleep-data-time">
+                      <a href="javascript:;" class="prev-day"></a>
+                      <a href="javascript:;" class="next-day"></a>
+                      <p class="sleep-cur-day">2014-08-09</p>
+                    </div>
+                    <div class="sleep-data-detail">
+                      <div class="sleep-time">
+                        <p class="sleep-time-con">2小时43分钟</p>
+                        <p class="sleep-time-tit">睡眠总时间</p>
+                      </div>
+                      <div id="member1SleepPie">
+                      </div>
+                      <div class="sleep-data-num">
+                        <p class="data-con">7小时20分钟</p>
+                        <p class="data-intro">躺在床上</p>
+                        <p class="data-con">31分钟</p>
+                        <p class="data-intro">入睡</p>
+                        <p class="data-con">4分钟</p>
+                        <p class="data-intro">起床</p>
+                      </div>
+                      <div class="data-sum">
+                        <p class="data-per">83%</p>
+                        <p>8小时睡眠</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="member1SleepGraph">
+                  </div>
+                  <div class="sleep-statics">
+                    <p class="deep-sleep">
+                      <span class="sleep-statics-tit">深度睡眠</span>
+                      <span class="sleep-statics-time">2小时43分钟</span>
+                    </p>
+                    <p class="light-sleep">
+                      <span class="sleep-statics-tit">轻度睡眠</span>
+                      <span class="sleep-statics-time">16分钟</span>
+                    </p>
+                    <p class="wake-sleep">
+                      <span class="sleep-statics-tit">清醒状态</span>
+                      <span class="sleep-statics-time">49分钟</span>
+                    </p>
+                  </div>
+                  <p class="sleep-per">
+                    <span class="deep-per" style="width: 22%;"></span>
+                    <span class="light-per" style="width: 45%;"></span>
+                    <span class="wake-per" style="width: 33%;"></span>
+                  </p>
                 </div>
               </div>
             </div>
             <div class="tab-pane" id="member1Detail">
-              详细数据
+              <ul class="nav-tab" id="member1DetailTabNav">
+                <li>
+                  <a data-toggle="tab" href="#member1DetailBlood">血压</a>
+                </li>
+                <li>
+                  <a data-toggle="tab" href="#member1DetailHeart">心率</a>
+                </li>
+                <li>
+                  <a data-toggle="tab" href="#member1DetailSport">运动</a>
+                </li>
+                <li class="active">
+                  <a data-toggle="tab" href="#member1DetailSleep">睡眠</a>
+                </li>
+                <li>
+                  <a data-toggle="tab" href="#member1DetailTem">体温</a>
+                </li>
+                <li class="last">
+                  <a data-toggle="tab" href="#member1DetailOther">其他</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="member1DetailTabContent">
+                <div class="tab-pane" id="member1DetailBlood">
+                  血压
+                </div>
+                <div class="tab-pane" id="member1DetailHeart">
+                  心率
+                </div>
+                <div class="tab-pane" id="member1DetailSport">
+                  运动
+                </div>
+                <div class="tab-pane fade in active" id="member1DetailSleep">
+                  <ul class="nav-tab" id="member1DetailSleepTabNav">
+                    <li class="active">
+                      <a data-toggle="tab" href="#member1General">按周</a>
+                    </li>
+                    <li>
+                      <a data-toggle="tab" href="#member1Detail">按月</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-pane" id="member1DetailTem">
+                  体温
+                </div>
+                <div class="tab-pane" id="member1DetailOther">
+                  其他
+                </div>
+              </div>
             </div>
             <div class="tab-pane" id="member1Exception">
               异常情况
@@ -551,6 +1052,8 @@
     <script src="js/jquery.flot.js"></script>
     <script src="js/jquery.flot.time.js"></script>
     <script src="js/jquery.flot.stack.js"></script>
+    <script src="js/jquery.flot.pie.js"></script>
+    <script src="js/fullcalendar.js"></script>
     <script>
       $(function()
       {
@@ -619,6 +1122,8 @@
             show:false
           },
           xaxis:{
+            min:new Date(2014, 6, 5).getTime(),
+            max:new Date(2014, 6, 23).getTime(),
             mode:"time",
             tickSize: [7, "day"],
             tickLength: 5,
@@ -646,7 +1151,7 @@
           color:"#fff"
         }).appendTo("body");
 
-        $("#member1BloodGraph").bind("plothover", function (event, pos, item) {
+        $("#member1BloodGraph").on("plothover", function (event, pos, item) {
           if (item) {
             var y = item.datapoint[1].toFixed(1);
 
@@ -654,11 +1159,372 @@
               $("#tooltipBlood").html("低压" + y + "mmHg").css({top: item.pageY+5, left: item.pageX+5, "background-color": $.color.parse(item.series.points.fillColor).scale('rgb', 0.5).toString()}).fadeIn(200);
             }
             else if(item.seriesIndex == 1){
-              $("#tooltip2").html("高压" + y + "mmHg").css({top: item.pageY+5, left: item.pageX-100, "background-color": $.color.parse(item.series.points.fillColor).scale('rgb', 0.5).toString()}).fadeIn(200);
+              $("#tooltipBlood").html("高压" + y + "mmHg").css({top: item.pageY+5, left: item.pageX-100, "background-color": $.color.parse(item.series.points.fillColor).scale('rgb', 0.5).toString()}).fadeIn(200);
             }
 
           } else {
-            $("#tooltip2").hide();
+            $("#tooltipBlood").hide();
+          }
+        });
+
+        //sport pie data
+        var perData = [
+          { label: "Series1",  data: 75, color:"#283e56"},
+          { label: "Series2",  data: 25, color:"#eef4f8"}
+        ];
+        $.plot("#member1SportPie", perData, {
+          legend:{
+            show:false
+          },
+          series:{
+            pie:{
+              innerRadius:0.8,
+              startAngle:0.5,
+              show:true,
+              label:{
+                show:false
+              }
+            }
+          },
+          grid: {
+            hoverable: true,
+            clickable: true
+          }
+        });
+
+        //sport data show
+        //运动分析
+        var d41 = [];
+
+        for (var i = 0; i <= 10; i += 1) {
+          d41.push([i, parseInt(Math.random() * 30)]);
+        }
+
+        var d42 = [];
+        for (var i = 0; i <= 10; i += 1) {
+          d42.push([i, parseInt(Math.random() * 30)]);
+        }
+
+        var d43 = [];
+        for (var i = 0; i <= 10; i += 1) {
+          d43.push([i, parseInt(Math.random() * 30)]);
+        }
+
+        var d4 = [];
+        d4[0] = [0, 0];
+        for (var i = 0.1; i <= 10; i += 0.1) {
+          d4.push([i, parseInt(Math.random()*5) + d4[parseInt(i*10) - 1][1]]);
+        }
+
+        $.plot("#member1SportGraph", [{
+          data:d4,
+          label:"累计运动量",
+          lines:{
+            lineWidth:0,
+            fill:true,
+            fillColor:"#eef4f8",
+            show:true
+          },
+          hoverable:false
+        },{
+          data:d41,
+          label:"轻微运动",
+          bars:{
+            show:true,
+            barWidth:0.8,
+            lineWidth:0,
+            align:"center",
+            fill:true,
+            fillColor:"#28c44d"
+          },
+          stack:"sports"
+        },{
+          data:d42,
+          label:"中等运动",
+          bars:{
+            show:true,
+            barWidth:0.8,
+            lineWidth:0,
+            align:"center",
+            fill:true,
+            fillColor:"#ffcc00"
+          },
+          stack:"sports"
+        },{
+          data:d43,
+          label:"剧烈运动",
+          bars:{
+            show:true,
+            barWidth:0.8,
+            lineWidth:0,
+            align:"center",
+            fill:true,
+            fillColor:"#f57574"
+          },
+          stack:"sports"
+        }],{
+          legend:{
+            show:false
+          },
+          xaxis:{
+            tickLength: 5,
+            position:"top"
+          },
+          yaxis:{
+            max:300,
+            min:0,
+            tickSize:300,
+            tickFormatter:function(){
+              return "";
+            }
+
+          },
+          grid:{
+            tickColor: "#a6adb5",
+            borderWidth:0,
+            hoverable: true,
+            clickable: true
+          }
+        });
+
+        //体温
+        //体温数据
+        var d1 = [
+          [new Date(2014, 6, 6).getTime(), 37.2],
+          [new Date(2014, 6, 8).getTime(), 36.7],
+          [new Date(2014, 6, 10).getTime(), 36.9],
+          [new Date(2014, 6, 12).getTime(), 37.0],
+          [new Date(2014, 6, 14).getTime(), 37.5],
+          [new Date(2014, 6, 16).getTime(), 38.0],
+          [new Date(2014, 6, 18).getTime(), 37.2],
+          [new Date(2014, 6, 20).getTime(), 36.2],
+          [new Date(2014, 6, 21).getTime(), 37.4],
+          [new Date(2014, 6, 22).getTime(), 37.8]
+        ];
+
+        $.plot("#member1TemGraph", [{
+          data: d1,
+          points: { show: true, fill: true, fillColor:"#37b0e9", lineWidth:0, radius:5, shadowSize:0},
+          label:"体温",
+          shadowSize:0,
+          color:"#37b0e9"
+        }], {
+          legend:{
+            show:false
+          },
+          xaxis:{
+            mode:"time",
+            tickSize: [7, "day"],
+            tickLength: 5,
+            timeformat: "%m-%d"
+          },
+          yaxis:{
+            min:32,
+            max:42,
+            tickSize:2,
+            tickFormatter: function(val, axis){
+              return val + "℃"
+            }
+          },
+          grid:{
+            borderWidth: 0,
+            markings:[
+              {yaxis: { from: 36, to: 38 }, color: "#f9fbfc"}
+            ],
+            hoverable: true,
+            clickable: true,
+            tickColor: "#a6adb5"
+          }
+        });
+
+        $("<div id='tooltipTem'></div>").css({
+          position: "absolute",
+          display: "none",
+          padding: "2px",
+          "background-color": "#283e56",
+          opacity: 0.80,
+          color:"#fff"
+        }).appendTo("body");
+
+        $("#member1TemGraph").bind("plothover", function (event, pos, item) {
+          if (item) {
+            var y = item.datapoint[1].toFixed(1);
+
+            $("#tooltipTem").html(y + "℃")
+                .css({top: item.pageY+5, left: item.pageX+5})
+                .fadeIn(200);
+          } else {
+            $("#tooltipTem").hide();
+          }
+        });
+
+        //心率
+        var d3 = [
+          [new Date(2014, 6, 6, 7, 0, 0).getTime(), 56.2],
+          [new Date(2014, 6, 6, 9, 0, 0).getTime(), 57.7],
+          [new Date(2014, 6, 6, 11, 0, 0).getTime(), 60.9],
+          [new Date(2014, 6, 6, 13, 0, 0).getTime(), 58.0],
+          [new Date(2014, 6, 6, 15, 0, 0).getTime(), 58.5],
+          [new Date(2014, 6, 6, 17, 0, 0).getTime(), 67.0],
+          [new Date(2014, 6, 6, 19, 0, 0).getTime(), 61.2],
+          [new Date(2014, 6, 6, 21, 0, 0).getTime(), 62.2],
+          [new Date(2014, 6, 6, 23, 0, 0).getTime(), 60.4],
+          [new Date(2014, 6, 7, 1, 0, 0).getTime(), 59.8],
+          [new Date(2014, 6, 7, 3, 0, 0).getTime(), 63.2]
+        ];
+        function generateHeart(axes){
+          var markings = [],
+              min = axes.yaxis.min,
+              max = axes.yaxis.max;
+
+          var step = 0.5;
+
+          for(var i = min; i < max; i += step)
+          {
+            if(i%2.5 != 0)
+            {
+              markings.push({yaxis: {from: i, to: i}, color:"#eef4f8"});
+            }
+          }
+
+          return markings;
+        }
+        $.plot("#member1HeartGraph", [{
+          data: d3,
+          points: { show: true, fill: true, fillColor:"#37b0e9", lineWidth:0, radius:5, shadowSize:0},
+          label:"心率",
+          shadowSize:0,
+          color:"#37b0e9"
+        }], {
+          legend:{
+            show:false
+          },
+          xaxis:{
+            mode:"time",
+            min:new Date(2014, 6, 6, 0, 0, 0).getTime(),
+            max:new Date(2014, 6, 8, 0, 0, 0).getTime(),
+            tickLength: 5,
+            ticks:function(axis){
+              var monthNames = ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+              var ticks = [];
+              var step = 3600*1000;
+              for(var i = axis.min; i <= axis.max; i += step){
+                var date = new Date(i);
+                if(date.getHours() === 0){
+                  ticks.push([i, date.getDate() + "." + monthNames[date.getMonth()]]);
+                }
+                else if(date.getHours()%12 === 0){
+                  ticks.push([i, date.getHours() + ":00"]);
+                }
+              }
+              return ticks;
+            }
+          },
+          yaxis:{
+            min:57.5,
+            max:70,
+            tickSize:2.5,
+            tickFormatter:function(val, axis){
+              return val.toFixed(1);
+            }
+          },
+          grid:{
+            tickColor: "#a6adb5",
+            borderWidth: 0,
+            markings:generateHeart,
+            hoverable: true,
+            clickable: true
+          }
+        });
+
+        $("<div id='tooltipHeart'></div>").css({
+          position: "absolute",
+          display: "none",
+          padding: "2px",
+          "background-color": "#283e56",
+          opacity: 0.80,
+          color:"#fff"
+        }).appendTo("body");
+
+        $("#member1HeartGraph").bind("plothover", function (event, pos, item) {
+          if (item) {
+            var y = item.datapoint[1].toFixed(1);
+
+            $("#tooltipHeart").html(y + "bpm")
+                .css({top: item.pageY+5, left: item.pageX+5})
+                .fadeIn(200);
+          } else {
+            $("#tooltipHeart").hide();
+          }
+        });
+
+        //sleep pie data
+        var perData2 = [
+          { label: "Series1",  data: 83, color:"#283e56"},
+          { label: "Series2",  data: 17, color:"#eef4f8"}
+        ];
+        $.plot("#member1SleepPie", perData2, {
+          legend:{
+            show:false
+          },
+          series:{
+            pie:{
+              innerRadius:0.8,
+              startAngle:0.5,
+              show:true,
+              label:{
+                show:false
+              }
+            }
+          },
+          grid: {
+            hoverable: true,
+            clickable: true
+          }
+        });
+
+        //睡眠分析
+        var d5 = [];
+
+        $.plot("#member1SleepGraph", [{
+          data:d5,
+          label:"睡眠分析",
+          points:{
+            show:false
+          },
+          hoverable:false
+        }],{
+          legend:{
+            show:false
+          },
+          xaxis:{
+            tickLength: 5,
+            position:"top",
+            min:0,
+            max:20,
+            tickSize:4
+          },
+          yaxis:{
+            max:400,
+            min:0,
+            tickSize:400,
+            tickFormatter:function(){
+              return "";
+            }
+          },
+          grid:{
+            tickColor: "#a6adb5",
+            borderWidth:0,
+            markings:[
+              {yaxis: {from: 0, to: 300}, xaxis: {from: 0, to: 2}, color:"#86e6fa"},
+              {yaxis: {from: 0, to: 100}, xaxis: {from: 2, to: 8}, color:"#0a62a0"},
+              {yaxis: {from: 0, to: 200}, xaxis: {from: 8, to: 9}, color:"#37b0e9"},
+              {yaxis: {from: 0, to: 300}, xaxis: {from: 9, to: 12}, color:"#86e6fa"},
+              {yaxis: {from: 0, to: 200}, xaxis: {from: 12, to: 16}, color:"#37b0e9"},
+              {yaxis: {from: 0, to: 100}, xaxis: {from: 16, to: 20}, color:"#0a62a0"}
+            ],
+            hoverable: true,
+            clickable: true
           }
         });
       });

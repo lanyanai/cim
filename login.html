@@ -72,14 +72,24 @@
     .icon-lock{
       background: url("img/lock.png") center no-repeat;
     }
-    .forget-pd a{
-      float: right;
+    p.text-info{
+      margin-top:-10px;
       margin-bottom: 20px;
-      margin-top: -10px;
+      overflow: hidden;
+    }
+    .text-info .tip{
+      line-height: 20px;
+      color: #f57574;
+      display: block;
+      float: left;
+      margin-left: 10px;
+    }
+    .forget-pd{
+      float: right;
       color: #fff;
     }
     .register a:hover,
-    .forget-pd a:hover{
+    .forget-pd:hover{
       color: #fff;
       text-decoration: underline;
     }
@@ -225,8 +235,9 @@
                 <i class="icon-lock"></i>
                 <input type="password" required="required" tabindex="2" placeholder="登录密码" class="input-area" id="password" name="password">
               </div>
-              <p class="forget-pd">
-                <a href="#">忘记登录密码？</a>
+              <p class="text-info">
+                <span class="tip">提示信息</span>
+                <a class="forget-pd" href="#">忘记登录密码？</a>
               </p>
               <input class="form-btn" value="立即登陆" id="loginBtn" type="submit">
               <p class="register">
