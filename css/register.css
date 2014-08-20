@@ -51,7 +51,7 @@ body{
   float:left;
 }
 #registerTabNav>li>a>.step{
-  background: url("img/step.png") center no-repeat;
+  background: url("../img/step.png") center no-repeat;
   width: 24px;
   height: 100%;
   text-align: center;
@@ -69,7 +69,7 @@ body{
   border-bottom-color: #f9fbfc;
 }
 #registerTabNav>li.active>a>.step{
-  background-image:url("img/step-active.png");
+  background-image:url("../img/step-active.png");
 }
 #registerTabNav>li>a>.content{
   margin-left: 10px;
@@ -124,10 +124,10 @@ body{
   z-index: 10;
 }
 .icon-user{
-  background: url("img/user.png") center no-repeat;
+  background: url("../img/user.png") center no-repeat;
 }
 .icon-lock{
-  background: url("img/lock.png") center no-repeat;
+  background: url("../img/lock.png") center no-repeat;
 }
 .form-btn,
 .form-btn:focus{
@@ -194,7 +194,7 @@ body{
 #createComplete{
   margin-left: 60px;
   padding-left: 40px;
-  background: url("img/checked.png") left top no-repeat;
+  background: url("../img/checked.png") left top no-repeat;
 }
 #createComplete h3{
   font-size: 24px;
@@ -248,7 +248,7 @@ body{
   border-bottom: 1px solid #eef4f8;
   line-height: 30px;
   font-size: 16px;
-  background: url("img/left-arrow.png") 50px center no-repeat;
+  background: url("../img/left-arrow.png") 50px center no-repeat;
   margin-bottom: 30px;
 }
 #addSubmitBtn{

@@ -56,7 +56,7 @@ body{
   border-bottom: 1px solid #eef4f8;
   line-height: 30px;
   font-size: 16px;
-  background: url("img/left-arrow.png") 50px center no-repeat;
+  background: url("../img/left-arrow.png") 50px center no-repeat;
   overflow: hidden;
 }
 #settingTit{
@@ -136,7 +136,7 @@ body{
   margin-left: 10px;
 }
 .icon-lock {
-  background: url("img/lock.png") center no-repeat;
+  background: url("../img/lock.png") center no-repeat;
 }
 .form-btn,
 .form-btn:focus{
@@ -172,7 +172,7 @@ body{
   margin-left: 96px;
 }
 #deleteBtn{
-  background: url("img/cross.png") 4px center no-repeat;
+  background: url("../img/cross.png") 4px center no-repeat;
   padding-left: 20px;
   line-height: 44px;
   display: block;
@@ -199,7 +199,7 @@ body{
   display: block;
   margin: 5px 5px 0;
   padding-left: 30px;
-  background: url("img/camera.jpg") 5px center no-repeat;
+  background: url("../img/camera.jpg") 5px center no-repeat;
   color: #37b0e9;
   text-decoration: none;
 }

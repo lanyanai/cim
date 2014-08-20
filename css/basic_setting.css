@@ -61,7 +61,7 @@ body{
   border-bottom: 1px solid #eef4f8;
   line-height: 30px;
   font-size: 16px;
-  background: url("img/left-arrow.png") 50px center no-repeat;
+  background: url("../img/left-arrow.png") 50px center no-repeat;
   overflow: hidden;
 }
 #settingTit{
@@ -173,7 +173,7 @@ body{
   line-height: 44px;
 }
 .icon-lock {
-  background: url("img/lock.png") center no-repeat;
+  background: url("../img/lock.png") center no-repeat;
 }
 .form-btn,
 .form-btn:focus{

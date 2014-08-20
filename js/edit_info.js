@@ -1,53 +1,53 @@
 /**
  * Created by zd on 2014/8/20.
  */
-var memberData = [{
-  name:"那英",
-  birthday:"1990-06-06",
-  sex:"female",
-  weight: 90,
-  height:170,
-  head:""
-}, {
-  name:"汪峰",
-  birthday:"1790-06-06",
-  sex:"male",
-  weight: 60,
-  height:180,
-  head:""
-}, {
-  name:"周鸿伟",
-  birthday:"1890-06-06",
-  sex:"male",
-  weight: 70,
-  height:190,
-  head:""
-}];
-
-function resetData(index){
-  $("#memberNav li").removeClass("active").eq(index).addClass("active");
-  $("#modifyMemberName").val(memberData[index].name);
-  $("#modifyMemberBirthday").val(memberData[index].birthday);
-  $("#modifyMemberWeight").val(memberData[index].weight);
-  $("#modifyMemberHeight").val(memberData[index].height);
-  $("input[value=" + memberData[index].sex + "]").attr("checked", "");
-}
+//var memberData = [{
+//  name:"那英",
+//  birthday:"1990-06-06",
+//  sex:"female",
+//  weight: 90,
+//  height:170,
+//  head:""
+//}, {
+//  name:"汪峰",
+//  birthday:"1790-06-06",
+//  sex:"male",
+//  weight: 60,
+//  height:180,
+//  head:""
+//}, {
+//  name:"周鸿伟",
+//  birthday:"1890-06-06",
+//  sex:"male",
+//  weight: 70,
+//  height:190,
+//  head:""
+//}];
+//
+//function resetData(index){
+//  $("#memberNav li").removeClass("active").eq(index).addClass("active");
+//  $("#modifyMemberName").val(memberData[index].name);
+//  $("#modifyMemberBirthday").val(memberData[index].birthday);
+//  $("#modifyMemberWeight").val(memberData[index].weight);
+//  $("#modifyMemberHeight").val(memberData[index].height);
+//  $("input[value=" + memberData[index].sex + "]").attr("checked", "");
+//}
 
 $(function()
 {
 
-  $.each(memberData, function (index, value) {
-    $("#memberNav").append('<li><a href="javascript:;">' + memberData[index].name + '</a></li>');
-  });
-  $("#memberNav li").first().addClass("first");
-  $("#memberNav li").last().addClass("last");
-  resetData(0);
-
-  $("#memberNav li").click(function(){
-    var $items = $("#memberNav>li");
-    var $curItem = $(this);
-    resetData($items.index($curItem));
-  });
+//  $.each(memberData, function (index, value) {
+//    $("#memberNav").append('<li><a href="javascript:;">' + memberData[index].name + '</a></li>');
+//  });
+//  $("#memberNav li").first().addClass("first");
+//  $("#memberNav li").last().addClass("last");
+//  resetData(0);
+//
+//  $("#memberNav li").click(function(){
+//    var $items = $("#memberNav>li");
+//    var $curItem = $(this);
+//    resetData($items.index($curItem));
+//  });
 
   //表单验证
   var $modifyMemberName = $("#modifyMemberName"),

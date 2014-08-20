@@ -74,7 +74,7 @@ body{
   border-bottom-color: #f9fbfc;
 }
 #memberTabNav>li.active>a>.step{
-  background-image:url("img/step-active.png");
+  background-image:url("../img/step-active.png");
 }
 #memberTabNav>li>a>.content{
   margin-left: 5px;
@@ -166,19 +166,19 @@ body{
   width: 20px;
 }
 .alert-item .data-item-icon{
-  background: url("img/alert.jpg") center no-repeat;
+  background: url("../img/alert.jpg") center no-repeat;
 }
 .alert-item h4{
   color: #cc3333;
 }
 .warning-item .data-item-icon{
-  background: url("img/warning.jpg") center no-repeat;
+  background: url("../img/warning.jpg") center no-repeat;
 }
 .warning-item h4{
   color: #f90;
 }
 .ok-item .data-item-icon{
-  background: url("img/ok.jpg") center no-repeat;
+  background: url("../img/ok.jpg") center no-repeat;
 }
 .ok-item h4{
   color: #28c44d;
@@ -294,7 +294,7 @@ body{
   top:0;
   height: 100%;
   width: 38px;
-  background: url("img/left-blue.png") center no-repeat;
+  background: url("../img/left-blue.png") center no-repeat;
 }
 .next-day{
   position: absolute;
@@ -302,7 +302,7 @@ body{
   top:0;
   height: 100%;
   width: 38px;
-  background: url("img/right-blue.png") center no-repeat;
+  background: url("../img/right-blue.png") center no-repeat;
 }
 .prev-day:hover,
 .next-day:hover{

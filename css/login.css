@@ -10,7 +10,7 @@ body{
 
 /*login area style*/
 .login-area{
-  background: url("img/login_bg.jpg") center no-repeat #37b0e9;
+  background: url("../img/login_bg.jpg") center no-repeat #37b0e9;
   width: 100%;
   height: 400px;
 }
@@ -61,10 +61,10 @@ body{
   height: 20px;
 }
 .icon-user{
-  background: url("img/user.png") center no-repeat;
+  background: url("../img/user.png") center no-repeat;
 }
 .icon-lock{
-  background: url("img/lock.png") center no-repeat;
+  background: url("../img/lock.png") center no-repeat;
 }
 p.text-info{
   margin-top:-10px;
