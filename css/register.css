@@ -1,0 +1,301 @@
+body{
+  background-color: #f9fbfc;
+}
+#user-menu .dropdown-toggle{
+  margin: 0;
+  border: none;
+  padding:29px 0;
+}
+.brand{
+  color: #37b0e9;
+  font-size:20px;
+  line-height: 30px;
+}
+.brand img{
+  float:left;
+  display: block;
+}
+/*step head style*/
+#registerTab{
+  position: relative;
+  color: #283e56;
+  font-family: "microsoft yahei";
+}
+.register-mask {
+  background-color: #eef4f8;
+  margin-bottom: 50px;
+  width: 100%;
+}
+#registerTabNav{
+  position: relative;
+  list-style-type: none;
+}
+#registerTabNav>li{
+  float:left;
+}
+#registerTabNav>li>a{
+  line-height: 60px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #283e56;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  cursor: default;
+}
+#registerTabNav>li.active>a{
+  background-color: #e1ebf1;
+}
+#registerTabNav>li>a>span{
+  display: block;
+  float:left;
+}
+#registerTabNav>li>a>.step{
+  background: url("img/step.png") center no-repeat;
+  width: 24px;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+}
+#registerTabNav>li>a>.caret{
+  position: absolute;
+  border-bottom:4px transparent solid;
+  border-top-color: transparent;
+  bottom:0;
+  left: 50%;
+}
+#registerTabNav>li.active>a>.caret{
+  border-bottom-color: #f9fbfc;
+}
+#registerTabNav>li.active>a>.step{
+  background-image:url("img/step-active.png");
+}
+#registerTabNav>li>a>.content{
+  margin-left: 10px;
+}
+
+/*register tab style*/
+.input-group{
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.input-group .controls{
+  padding-left:96px;
+  float:left;
+  position: relative;
+  width: 300px;
+  overflow: hidden;
+}
+.input-group .control-label{
+  position: absolute;
+  width: 80px;
+  padding: 0 8px;
+  display: block;
+  line-height: 44px;
+  text-align: right;
+  color: #283e56;
+  top:0;
+  left: 0;
+}
+.input-group .tip{
+  float:left;
+  margin-left: 20px;
+  color: #f57574;
+  line-height: 44px;
+}
+.input-group .input-area{
+  padding: 12px 10px 12px 40px;
+  *padding: 10px 10px 10px 40px;
+  display: block;
+  margin:0 auto;
+  width: 248px;
+  position: relative;
+  left: 0;
+}
+.input-group i{
+  display: block;
+  position: absolute;
+  top:13px;
+  left: 106px;
+  width: 24px;
+  height: 20px;
+  z-index: 10;
+}
+.icon-user{
+  background: url("img/user.png") center no-repeat;
+}
+.icon-lock{
+  background: url("img/lock.png") center no-repeat;
+}
+.form-btn,
+.form-btn:focus{
+  font-size:14px;
+  line-height: 44px;
+  display: block;
+  background-color: #37b0e9;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  text-decoration: none;
+}
+.form-btn:hover{
+  background-color: #3cbefb;
+  color: #fff;
+  text-decoration: none;
+}
+.form-btn:active{
+  color: #fff;
+  text-decoration: none;
+  background-color: #31a5db;
+}
+.form-btn.disabled{
+  color: #a6adb5;
+  background-color: #e5eef4;
+  text-decoration: none;
+}
+
+#declaration{
+  width: auto;
+}
+
+/*step2 style*/
+#step2 .input-group .input-area,
+#step4 .input-group .input-area{
+  padding-left: 10px;
+  width: 278px;
+}
+.input-group .add-on{
+  float: left;
+  display: block;
+  line-height: 44px;
+  margin-left: 10px;
+}
+#step2 .controls .radio,
+#step4 .controls .radio{
+  padding: 0;
+  margin: 0;
+  line-height: 44px;
+  float:left;
+}
+#step2 .controls .radio input[type="radio"],
+#step4 .controls .radio input[type="radio"]{
+  float:none;
+  margin:0;
+  width: 50px;
+  line-height: 44px;
+  height: 20px;
+}
+
+/*step3 style*/
+#createComplete{
+  margin-left: 60px;
+  padding-left: 40px;
+  background: url("img/checked.png") left top no-repeat;
+}
+#createComplete h3{
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+#createComplete .btn-group{
+  overflow: hidden;
+}
+#addMemberBtn{
+  float:left;
+  padding: 0 40px;
+}
+#skipBtn{
+  float: left;
+  margin-left: 20px;
+}
+.gray-btn{
+  font-size:14px;
+  line-height: 44px;
+  display: block;
+  padding: 0 40px;
+  width: auto;
+  background-color: #a6adb5;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+}
+.gray-btn:hover{
+  background-color: #b3bcc5;
+  color: #fff;
+  text-decoration: none;
+}
+.gray-btn:active{
+  color: #fff;
+  text-decoration: none;
+  background-color: #9ea4ac;
+}
+.gray-btn.disabled{
+  color: #a6adb5;
+  background-color: #e5eef4;
+  text-decoration: none;
+}
+
+/*step4 style*/
+.add-info{
+  padding:10px 0 10px 60px;
+  border-bottom: 1px solid #eef4f8;
+  line-height: 30px;
+  font-size: 16px;
+  background: url("img/left-arrow.png") 50px center no-repeat;
+  margin-bottom: 30px;
+}
+#addSubmitBtn{
+  float:left;
+  padding:0 40px;
+  margin-left: 96px;
+}
+#cancelAddBtn{
+  float:left;
+  padding: 0 40px;
+  margin-left: 20px;
+}
+
+/*tab content style*/
+#registerTabContent{
+  margin-bottom: 50px;
+}
+
+/*footer style*/
+.footer{
+  color: #283e56;
+  font-size: 12px;
+}
+.footer-info{
+  padding: 25px 0;
+  background-color: #f1f5f7;
+}
+.footer-info h3{
+  font-size: 18px;
+  line-height: 34px;
+  border-bottom: 1px solid #dfe5e8;
+  margin:0;
+}
+.footer-info ul{
+  margin:20px 0 10px 15px;
+}
+.footer-info li{
+  margin-bottom:15px;
+}
+.footer-info li a{
+  color: #283e56;
+}
+.footer-info h2.phone{
+  font-size: 24px;
+  font-weight: normal;
+}
+.footer-copy{
+  text-align: center;
+  padding:20px 0 30px;
+}
