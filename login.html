@@ -28,7 +28,10 @@
     .cloud-intro{
       margin-left: 60px;
       margin-top: 50px;
+      width: 600px;
       color: #fff;
+      overflow: hidden;
+      float: left;
     }
     .cloud-intro li{
       margin: 10px 0;
@@ -36,7 +39,8 @@
     }
 
     .login-form{
-      margin-top:30px;
+      width: 300px;
+      margin:30px 0 0;
       background-color: #2f779f;
     }
     .login-form form{
@@ -77,7 +81,7 @@
       margin-bottom: 20px;
       overflow: hidden;
     }
-    .text-info .tip{
+    .text-info .warning{
       line-height: 20px;
       color: #f57574;
       display: block;
@@ -93,7 +97,8 @@
       color: #fff;
       text-decoration: underline;
     }
-    .form-btn{
+    .form-btn,
+    .form-btn:focus{
       font-size:14px;
       line-height: 44px;
       display: block;
@@ -105,6 +110,7 @@
       margin-bottom:40px;
       border: none;
       width: 100%;
+      text-decoration: none;
     }
     .form-btn:hover{
       background-color: #3cbefb;
@@ -200,7 +206,7 @@
           </ul>
           <ul class="nav pull-right">
             <li class="dropdown" id="user-menu">
-              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">ximeng@gmial.com<b class="caret"></b></a>
+              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">ximeng@gmail.com<b class="caret"></b></a>
               <ul role="menu" class="dropdown-menu">
                 <li role="presentation"><a href="#" tabindex="-1" role="menuitem">用户资料</a></li>
                 <li role="presentation"><a href="#" tabindex="-1" role="menuitem">基本设置</a></li>
@@ -215,36 +221,34 @@
     <!--登录-->
     <div class="login-area">
       <div class="container">
-        <div class="row">
-          <div class="span7 cloud-intro">
-            <h2>希盟云服务平台</h2>
-            <ul>
-              <li>患有心脏病并希望24小时连续监护自己身体状况的。</li>
-              <li>是目前世界上唯一一款能将心脏活动情况等十多项在一起的健康监护产品。</li>
-              <li>能在运动状态下，准确采集到人体数据，进行动静态分析。</li>
-            </ul>
-          </div>
-          <div class="span4 pull-right login-form">
-            <form>
-              <h4>登陆希盟云服务平台</h4>
-              <div class="form-group">
-                <i class="icon-user"></i>
-                <input type="text" required="required" tabindex="1" placeholder="邮箱地址/手机号码" class="input-area" id="username" name="username">
-              </div>
-              <div class="form-group">
-                <i class="icon-lock"></i>
-                <input type="password" required="required" tabindex="2" placeholder="登录密码" class="input-area" id="password" name="password">
-              </div>
-              <p class="text-info">
-                <span class="tip">提示信息</span>
-                <a class="forget-pd" href="#">忘记登录密码？</a>
-              </p>
-              <input class="form-btn" value="立即登陆" id="loginBtn" type="submit">
-              <p class="register">
-                <a href="#">注册</a>
-              </p>
-            </form>
-          </div>
+        <div class="cloud-intro">
+          <h2>希盟云服务平台</h2>
+          <ul>
+            <li>患有心脏病并希望24小时连续监护自己身体状况的。</li>
+            <li>是目前世界上唯一一款能将心脏活动情况等十多项在一起的健康监护产品。</li>
+            <li>能在运动状态下，准确采集到人体数据，进行动静态分析。</li>
+          </ul>
+        </div>
+        <div class="pull-right login-form">
+          <form>
+            <h4>登陆希盟云服务平台</h4>
+            <div class="form-group">
+              <i class="icon-user"></i>
+              <input type="text" required="required" tabindex="1" placeholder="邮箱地址/手机号码" class="input-area" id="familyname" name="family_name">
+            </div>
+            <div class="form-group">
+              <i class="icon-lock"></i>
+              <input type="password" required="required" tabindex="2" placeholder="登录密码" class="input-area" id="password" name="password">
+            </div>
+            <p class="text-info">
+              <span class="warning"></span>
+              <a class="forget-pd" href="#">忘记登录密码？</a>
+            </p>
+            <input class="form-btn" value="立即登陆" id="loginBtn" type="submit">
+            <p class="register">
+              <a href="#">注册</a>
+            </p>
+          </form>
         </div>
       </div>
     </div>
@@ -298,5 +302,56 @@
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/validate.js"></script>
+    <script>
+      $(function(){
+        var $familyname = $("#familyname");
+        var $password = $("#password");
+        var $tip = $(".warning");
+
+        var familynameVa = true,
+            passwordVa = true;
+        $familyname.blur(function(){
+          var family_name = $familyname.val();
+          if(!validateMobile(family_name) && !validateEmail(family_name)){
+            $tip.text("请输入正确的账号");
+            familynameVa = false;
+          }else{
+            if(passwordVa){
+              $tip.text("");
+            }else{
+              $tip.text("密码长度不符");
+            }
+            familynameVa = true;
+          }
+        });
+
+        $password.blur(function(){
+          var password = $password.val();
+          if(!validatePassword(password)){
+            $tip.text("密码长度不符");
+            passwordVa = false;
+          }else{
+            if(familynameVa){
+              $tip.text("");
+            }else{
+              $tip.text("请输入正确的账号");
+            }
+            passwordVa = true;
+          }
+        });
+
+        $("#loginBtn").click(function(){
+          $password.blur();
+          $familyname.blur();
+          if(familynameVa && passwordVa){
+            $("form").submit();
+          }else{
+
+            return false;
+          }
+        });
+      });
+    </script>
   </body>
 </html>

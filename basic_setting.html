@@ -184,7 +184,8 @@
       .icon-lock {
         background: url("img/lock.png") center no-repeat;
       }
-      .form-btn{
+      .form-btn,
+      .form-btn:focus{
         font-size:14px;
         line-height: 44px;
         display: block;
@@ -194,6 +195,7 @@
         cursor: pointer;
         border-radius: 4px;
         border: none;
+        text-decoration: none;
       }
       .form-btn:hover{
         background-color: #3cbefb;
@@ -261,7 +263,7 @@
               </span>
           <ul class="nav pull-right">
             <li class="dropdown" id="user-menu">
-              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">ximeng@gmial.com<b class="caret"></b></a>
+              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">ximeng@gmail.com<b class="caret"></b></a>
               <ul role="menu" class="dropdown-menu">
                 <li role="presentation"><a href="#" tabindex="-1" role="menuitem">用户资料</a></li>
                 <li role="presentation"><a href="#" tabindex="-1" role="menuitem">基本设置</a></li>
@@ -398,10 +400,71 @@
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="js/validate.js"></script>
     <script>
-      $(function()
-      {
+      $(function(){
+        //修改密码验证
+        var $curPassword = $("#curPassword"),
+            $password = $("#password"),
+            $repeatPassword = $("#repeatPassword");
+        var curPasswordVa = true,
+            passwordVa = true,
+            repeatPasswordVa = true;
 
+        $curPassword.blur(function(){
+          var curPassword = $curPassword.val();
+          var $tip = $curPassword.parent().next();
+          if(!validatePassword(curPassword)){
+            $tip.text("请输入6-128位密码");
+            curPasswordVa = false;
+          }else{
+            $tip.text("");
+            curPasswordVa = true;
+          }
+        });
+
+        $password.blur(function(){
+          var password = $password.val();
+          var $tip = $password.parent().next();
+          if(!validatePassword(password)){
+            $tip.text("请输入6-128位密码");
+            passwordVa = false;
+          }else{
+            $tip.text("");
+            passwordVa = true;
+          }
+        });
+
+        $repeatPassword.blur(function(){
+          var password = $password.val();
+          var repeatPassword = $repeatPassword.val();
+          var $tip = $repeatPassword.parent().next();
+          if(password !== repeatPassword){
+            $tip.text("两次密码不一致");
+            repeatPasswordVa = false;
+          }else{
+            $tip.text("");
+            repeatPasswordVa = true;
+          }
+        });
+
+        $("#modifyBtn").click(function(){
+          $curPassword.blur();
+          $password.blur();
+          $repeatPassword.blur();
+          if(curPasswordVa && passwordVa && repeatPasswordVa){
+            //提交修改密码
+            $.post("dd.php", {
+
+              password:$password.val()
+            }, function(data){
+              //修改结果
+
+            }, "json");
+          }else{
+            return false;
+          }
+        });
       });
     </script>
   </body>

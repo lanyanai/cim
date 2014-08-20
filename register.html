@@ -33,16 +33,12 @@
       }
       .register-mask {
         background-color: #eef4f8;
-        height: 60px;
-        position: absolute;
-        top:0;
-        left: 0;
+        margin-bottom: 50px;
         width: 100%;
       }
       #registerTabNav{
         position: relative;
         list-style-type: none;
-        margin-bottom: 50px;
       }
       #registerTabNav>li{
         float:left;
@@ -143,7 +139,8 @@
       .icon-lock{
         background: url("img/lock.png") center no-repeat;
       }
-      .form-btn{
+      .form-btn,
+      .form-btn:focus{
         font-size:14px;
         line-height: 44px;
         display: block;
@@ -153,6 +150,7 @@
         cursor: pointer;
         border-radius: 4px;
         border: none;
+        text-decoration: none;
       }
       .form-btn:hover{
         background-color: #3cbefb;
@@ -324,7 +322,7 @@
           </span>
           <ul class="nav pull-right">
             <li class="dropdown" id="user-menu">
-              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">ximeng@gmial.com<b class="caret"></b></a>
+              <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#">ximeng@gmail.com<b class="caret"></b></a>
               <ul role="menu" class="dropdown-menu">
                 <li role="presentation"><a href="#" tabindex="-1" role="menuitem">用户资料</a></li>
                 <li role="presentation"><a href="#" tabindex="-1" role="menuitem">基本设置</a></li>
@@ -338,29 +336,30 @@
 
     <!--分步-->
     <div id="registerTab">
-      <div class="register-mask"></div>
-      <ul class="nav-tab container" id="registerTabNav">
-        <li class="active">
-          <a data-toggle="tab" href="#step1">
-            <span class="step">1</span><span class="content">创建您的家庭账号</span><span class="caret"></span>
-          </a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#step2">
-            <span class="step">2</span><span class="content">填写个人信息</span><span class="caret"></span>
-          </a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#step3">
-            <span class="step">3</span><span class="content">创建成功</span><span class="caret"></span>
-          </a>
-        </li>
-        <li>
-          <a data-toggle="tab" href="#step4">
-            <span class="step">4</span><span class="content">填写其他家庭成员信息</span><span class="caret"></span>
-          </a>
-        </li>
-      </ul>
+      <div class="register-mask">
+        <ul class="nav-tab container" id="registerTabNav">
+          <li class="active">
+            <a data-toggle="tab" href="#step1">
+              <span class="step">1</span><span class="content">创建您的家庭账号</span><span class="caret"></span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#step2">
+              <span class="step">2</span><span class="content">填写个人信息</span><span class="caret"></span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#step3">
+              <span class="step">3</span><span class="content">创建成功</span><span class="caret"></span>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="tab" href="#step4">
+              <span class="step">4</span><span class="content">填写其他家庭成员信息</span><span class="caret"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
       <div class="tab-content container" id="registerTabContent">
         <div class="tab-pane fade in active" id="step1">
           <form class="register-form">
@@ -370,7 +369,7 @@
                 <i class="icon-user"></i>
                 <input type="text" required="required" tabindex="1" placeholder="邮箱地址/手机号码" class="input-area" id="username" name="username">
               </div>
-              <p class="tip">账号已存在</p>
+              <p class="tip"></p>
             </div>
             <div class="input-group">
               <label for="password" class="control-label">密码</label>
@@ -390,7 +389,7 @@
             </div>
             <div class="input-group">
               <div class="controls">
-                <a href="#" id="registerBtn" class="form-btn">立即创建</a>
+                <a href="javascript:;" id="registerBtn" class="form-btn">立即创建</a>
               </div>
             </div>
             <div class="input-group">
@@ -407,14 +406,14 @@
               <div class="controls">
                 <input type="text" required="required" tabindex="1" placeholder="请填写成员姓名" class="input-area" id="memberName" name="memberName">
               </div>
-              <p class="tip">提示信息</p>
+              <p class="tip"></p>
             </div>
             <div class="input-group">
               <label for="memberBirthday" class="control-label">生日</label>
               <div class="controls">
-                <input type="text" required="required" tabindex="1" placeholder="例：1990-02-10" class="input-area" id="memberBirthday" name="memberBirthday">
+                <input type="text" readonly="" required="required" tabindex="1" placeholder="例：1990-02-10" class="input-area" id="memberBirthday" name="memberBirthday">
               </div>
-              <p class="tip">提示信息</p>
+              <p class="tip"></p>
             </div>
             <div class="input-group">
               <label class="control-label">性别</label>
@@ -436,7 +435,7 @@
                 <input type="number" required="required" tabindex="1" placeholder="例：50" class="input-area" id="memberWeight" name="memberWeight">
               </div>
               <span class="add-on">kg</span>
-              <p class="tip">提示信息</p>
+              <p class="tip"></p>
             </div>
             <div class="input-group">
               <label for="memberHeight" class="control-label">身高</label>
@@ -444,11 +443,11 @@
                 <input type="number" required="required" tabindex="1" placeholder="例：180" class="input-area" id="memberHeight" name="memberHeight">
               </div>
               <span class="add-on">cm</span>
-              <p class="tip">提示信息</p>
+              <p class="tip"></p>
             </div>
             <div class="input-group">
               <div class="controls">
-                <a href="#" id="submitBtn" class="form-btn">确认提交</a>
+                <a href="javascript:;" id="submitBtn" class="form-btn">确认提交</a>
               </div>
             </div>
           </form>
@@ -471,14 +470,14 @@
               <div class="controls">
                 <input type="text" required="required" tabindex="1" placeholder="请填写成员姓名" class="input-area" id="addMemberName" name="memberName">
               </div>
-              <p class="tip">提示信息</p>
+              <p class="tip"></p>
             </div>
             <div class="input-group">
               <label for="addMemberBirthday" class="control-label">生日</label>
               <div class="controls">
-                <input type="text" required="required" tabindex="1" placeholder="例：1990-02-10" class="input-area" id="addMemberBirthday" name="addMemberBirthday">
+                <input type="text" readonly="" required="required" tabindex="1" placeholder="例：1990-02-10" class="input-area" id="addMemberBirthday" name="addMemberBirthday">
               </div>
-              <p class="tip">提示信息</p>
+              <p class="tip"></p>
             </div>
             <div class="input-group">
               <label class="control-label">性别</label>
@@ -500,7 +499,7 @@
                 <input type="number" required="required" tabindex="1" placeholder="例：50" class="input-area" id="addMemberWeight" name="addMemberWeight">
               </div>
               <span class="add-on">kg</span>
-              <p class="tip">提示信息</p>
+              <p class="tip"></p>
             </div>
             <div class="input-group">
               <label for="addMemberHeight" class="control-label">身高</label>
@@ -508,7 +507,7 @@
                 <input type="number" required="required" tabindex="1" placeholder="例：180" class="input-area" id="addMemberHeight" name="addMemberHeight">
               </div>
               <span class="add-on">cm</span>
-              <p class="tip">提示信息</p>
+              <p class="tip"></p>
             </div>
             <div class="input-group">
               <a href="#" id="addSubmitBtn" class="form-btn">确认，继续添加</a>
@@ -562,33 +561,230 @@
       </div>
     </div>
 
+    <script src="js/validate.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/bootstrap-datepicker.zh-CN.js"></script>
     <script>
-      $(function()
-      {
-        $("#registerTabNav a").click(function()
-        {
+      //加载完执行函数
+      $(function(){
+
+        //禁用tab导航点击切换
+        $("#registerTabNav a").click(function(){
           return false;
         });
 
-        $("#registerBtn").click(function()
-        {
-          $("#registerTabNav li:eq(1) a").tab("show");
+        //step1 注册
+        var $username = $("#username");
+        var $password = $("#password");
+        var $repeatPassword = $("#repeatPassword");
+        var usernameVa = true,
+            passwordVa = true,
+            repeatPasswordVa = true;
+        $username.blur(function(){
+          var family_name = $username.val();
+          var $tip = $username.parent().next();
+          if(!validateMobile(family_name) && !validateEmail(family_name)){
+            $tip.text("请输入正确的邮箱或者手机号");
+            usernameVa = false;
+          }else{
+            $tip.text("");
+            usernameVa = true;
+          }
+        });
+
+        $password.blur(function(){
+          var password = $password.val();
+          var $tip = $password.parent().next();
+          if(!validatePassword(password)){
+            $tip.text("请输入6-128位密码");
+            passwordVa = false;
+          }else{
+            $tip.text("");
+            passwordVa = true;
+          }
+        });
+
+        $repeatPassword.blur(function(){
+          var password = $password.val();
+          var repeatPassword = $repeatPassword.val();
+          var $tip = $repeatPassword.parent().next();
+          if(password !== repeatPassword){
+            $tip.text("两次密码不一致");
+            repeatPasswordVa = false;
+          }else{
+            $tip.text("");
+            repeatPasswordVa = true;
+          }
+        });
+
+        $("#registerBtn").click(function(){
+          $username.blur();
+          $password.blur();
+          $repeatPassword.blur();
+          if(usernameVa && passwordVa && repeatPasswordVa){
+            //提交注册
+            $.post("dd.php", {
+              family_name:$username.val(),
+              password:$password.val()
+            }, function(data){
+              //注册结果
+              $("#registerTabNav li:eq(1) a").tab("show");
+            }, "json");
+          }else{
+            return false;
+          }
+        });
+
+        //step2 创建家庭成员
+        var $memberName = $("#memberName"),
+            $memberBirthday = $("#memberBirthday"),
+            $memberWeight = $("#memberWeight"),
+            $memberHeight = $("#memberHeight");
+        var memberNameVa = true,
+            memberBirthdayVa = true,
+            memberWeightVa = true,
+            memberHeightVa = true;
+
+        $memberName.blur(function(){
+          var $tip = $(this).parent().next();
+          if($memberName.val().length === 0){
+            $tip.text("请输入正确姓名");
+            memberNameVa = false;
+          }else{
+            $tip.text("");
+            memberNameVa = true;
+          }
+        });
+
+        $memberBirthday.change(function(){
+          var $tip = $(this).parent().next();
+          if($memberBirthday.val().length === 0){
+            $tip.text("请选择出生日期");
+            memberBirthdayVa = false;
+          }else{
+            $tip.text("");
+            memberBirthdayVa = true;
+          }
+        });
+
+        $memberWeight.blur(function(){
+          var $tip = $(this).parent().next().next();
+          if(!validateNum($memberWeight.val(), 0, 500)){
+            $tip.text("请输入正确体重");
+            memberWeightVa = false;
+          }else{
+            $tip.text("");
+            memberWeightVa = true;
+          }
+        });
+
+        $memberHeight.blur(function(){
+          var $tip = $(this).parent().next().next();
+          if(!validateNum($memberHeight.val(), 0, 400)){
+            $tip.text("请输入正确身高");
+            memberHeightVa = false;
+          }else{
+            $tip.text("");
+            memberHeightVa = true;
+          }
         });
 
         $("#submitBtn").click(function()
         {
-          $("#registerTabNav li:eq(2) a").tab("show");
+          $memberName.blur();
+          $memberBirthday.change();
+          $memberWeight.blur();
+          $memberHeight.blur();
+          if(memberNameVa && memberBirthdayVa && memberWeightVa && memberHeightVa){
+            $.post("add.php", {
+
+            }, function(data){
+              $("#registerTabNav li:eq(2) a").tab("show");
+            }, "json");
+          }
         });
 
+
+        //step3 是否继续添加
         $("#addMemberBtn").click(function()
         {
           $("#registerTabNav li:eq(3) a").tab("show");
         });
 
+        //step4 添加家庭成员
+        var $addMemberName = $("#addMemberName"),
+            $addMemberBirthday = $("#addMemberBirthday"),
+            $addMemberWeight = $("#addMemberWeight"),
+            $addMemberHeight = $("#addMemberHeight");
+        var addMemberNameVa = true,
+            addMemberBirthdayVa = true,
+            addMemberWeightVa = true,
+            addMemberHeightVa = true;
+
+        $addMemberName.blur(function(){
+          var $tip = $(this).parent().next();
+          if($addMemberName.val().length === 0){
+            $tip.text("请输入正确姓名");
+            addMemberNameVa = false;
+          }else{
+            $tip.text("");
+            addMemberNameVa = true;
+          }
+        });
+
+        $addMemberBirthday.change(function(){
+          var $tip = $(this).parent().next();
+          if($addMemberBirthday.val().length === 0){
+            $tip.text("请选择出生日期");
+            addMemberBirthdayVa = false;
+          }else{
+            $tip.text("");
+            addMemberBirthdayVa = true;
+          }
+        });
+
+        $addMemberWeight.blur(function(){
+          var $tip = $(this).parent().next().next();
+          if(!validateNum($addMemberWeight.val(), 0, 500)){
+            $tip.text("请输入正确体重");
+            addMemberWeightVa = false;
+          }else{
+            $tip.text("");
+            addMemberWeightVa = true;
+          }
+        });
+
+        $addMemberHeight.blur(function(){
+          var $tip = $(this).parent().next().next();
+          if(!validateNum($addMemberHeight.val(), 0, 400)){
+            $tip.text("请输入正确身高");
+            addMemberHeightVa = false;
+          }else{
+            $tip.text("");
+            addMemberHeightVa = true;
+          }
+        });
+
+        $("#addSubmitBtn").click(function()
+        {
+          $addMemberName.blur();
+          $addMemberBirthday.change();
+          $addMemberWeight.blur();
+          $addMemberHeight.blur();
+          if(addMemberNameVa && addMemberBirthdayVa && addMemberWeightVa && addMemberHeightVa){
+            $.post("add.php", {
+
+            }, function(data){
+              $("#add-info-form")[0].reset();
+            }, "json");
+          }else{
+            return false;
+          }
+        });
+
+        //日期选择功能
         $("#memberBirthday, #addMemberBirthday").datepicker({
           format: "yyyy-mm-dd",
           weekStart: 1,

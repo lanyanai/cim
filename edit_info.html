@@ -148,7 +148,8 @@
       .icon-lock {
         background: url("img/lock.png") center no-repeat;
       }
-      .form-btn{
+      .form-btn,
+      .form-btn:focus{
         font-size:14px;
         line-height: 44px;
         display: block;
@@ -158,6 +159,7 @@
         cursor: pointer;
         border-radius: 4px;
         border: none;
+        text-decoration: none;
       }
       .form-btn:hover{
         background-color: #3cbefb;
@@ -279,21 +281,21 @@
       <div class="tab-head">
         <p id="settingTit">基本设置-编辑成员资料</p>
         <ul id="memberNav">
-          <li class="active first">
-            <a href="#">
-              那英
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              汪峰
-            </a>
-          </li>
-          <li class="last">
-            <a href="#">
-              周鸿伟
-            </a>
-          </li>
+          <!--<li class="active first">-->
+            <!--<a href="#">-->
+              <!--那英-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--<a href="#">-->
+              <!--汪峰-->
+            <!--</a>-->
+          <!--</li>-->
+          <!--<li class="last">-->
+            <!--<a href="#">-->
+              <!--周鸿伟-->
+            <!--</a>-->
+          <!--</li>-->
         </ul>
       </div>
 
@@ -303,14 +305,14 @@
           <div class="controls">
             <input type="text" required="required" tabindex="1" placeholder="请填写成员姓名" class="input-area" id="modifyMemberName" name="modifyMemberName">
           </div>
-          <p class="tip">提示信息</p>
+          <p class="tip"></p>
         </div>
         <div class="input-group">
           <label for="modifyMemberBirthday" class="control-label">生日</label>
           <div class="controls">
-            <input type="text" required="required" tabindex="1" placeholder="例：1990-02-10" class="input-area" id="modifyMemberBirthday" name="modifyMemberBirthday">
+            <input type="text" readonly="" required="required" tabindex="1" placeholder="例：1990-02-10" class="input-area" id="modifyMemberBirthday" name="modifyMemberBirthday">
           </div>
-          <p class="tip">提示信息</p>
+          <p class="tip"></p>
         </div>
         <div class="input-group">
           <label class="control-label">性别</label>
@@ -332,7 +334,7 @@
             <input type="number" required="required" tabindex="1" placeholder="例：50" class="input-area" id="modifyMemberWeight" name="modifyMemberWeight">
           </div>
           <span class="add-on">kg</span>
-          <p class="tip">提示信息</p>
+          <p class="tip"></p>
         </div>
         <div class="input-group">
           <label for="modifyMemberHeight" class="control-label">身高</label>
@@ -340,7 +342,7 @@
             <input type="number" required="required" tabindex="1" placeholder="例：180" class="input-area" id="modifyMemberHeight" name="memberHeight">
           </div>
           <span class="add-on">cm</span>
-          <p class="tip">提示信息</p>
+          <p class="tip"></p>
         </div>
         <div id="modifyHead">
           <img src="img/head.jpg">
@@ -402,9 +404,129 @@
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/bootstrap-datepicker.zh-CN.js"></script>
     <script src="js/jquery.upload.v2.js"></script>
+    <script src="js/validate.js"></script>
     <script>
+      var memberData = [{
+        name:"那英",
+        birthday:"1990-06-06",
+        sex:"female",
+        weight: 90,
+        height:170,
+        head:""
+      }, {
+        name:"汪峰",
+        birthday:"1790-06-06",
+        sex:"male",
+        weight: 60,
+        height:180,
+        head:""
+      }, {
+        name:"周鸿伟",
+        birthday:"1890-06-06",
+        sex:"male",
+        weight: 70,
+        height:190,
+        head:""
+      }];
+
+      function resetData(index){
+        $("#memberNav li").removeClass("active").eq(index).addClass("active");
+        $("#modifyMemberName").val(memberData[index].name);
+        $("#modifyMemberBirthday").val(memberData[index].birthday);
+        $("#modifyMemberWeight").val(memberData[index].weight);
+        $("#modifyMemberHeight").val(memberData[index].height);
+        $("input[value=" + memberData[index].sex + "]").attr("checked", "");
+      }
+
       $(function()
       {
+
+        $.each(memberData, function (index, value) {
+          $("#memberNav").append('<li><a href="javascript:;">' + memberData[index].name + '</a></li>');
+        });
+        $("#memberNav li").first().addClass("first");
+        $("#memberNav li").last().addClass("last");
+        resetData(0);
+
+        $("#memberNav li").click(function(){
+          var $items = $("#memberNav>li");
+          var $curItem = $(this);
+          resetData($items.index($curItem));
+        });
+
+        //表单验证
+        var $modifyMemberName = $("#modifyMemberName"),
+            $modifyMemberBirthday = $("#modifyMemberBirthday"),
+            $modifyMemberWeight = $("#modifyMemberWeight"),
+            $modifyMemberHeight = $("#modifyMemberHeight");
+        var modifyMemberNameVa = true,
+            modifyMemberBirthdayVa = true,
+            modifyMemberWeightVa = true,
+            modifyMemberHeightVa = true;
+
+        $modifyMemberName.blur(function(){
+          var $tip = $(this).parent().next();
+          if($modifyMemberName.val().length === 0){
+            $tip.text("请输入正确姓名");
+            modifyMemberNameVa = false;
+          }else{
+            $tip.text("");
+            modifyMemberNameVa = true;
+          }
+        });
+
+        $modifyMemberBirthday.change(function(){
+          var $tip = $(this).parent().next();
+          if($modifyMemberBirthday.val().length === 0){
+            $tip.text("请选择出生日期");
+            modifyMemberBirthdayVa = false;
+          }else{
+            $tip.text("");
+            modifyMemberBirthdayVa = true;
+          }
+        });
+
+        $modifyMemberWeight.blur(function(){
+          var $tip = $(this).parent().next().next();
+          if(!validateNum($modifyMemberWeight.val(), 0, 500)){
+            $tip.text("请输入正确体重");
+            modifyMemberWeightVa = false;
+          }else{
+            $tip.text("");
+            modifyMemberWeightVa = true;
+          }
+        });
+
+        $modifyMemberHeight.blur(function(){
+          var $tip = $(this).parent().next().next();
+          if(!validateNum($modifyMemberHeight.val(), 0, 400)){
+            $tip.text("请输入正确身高");
+            modifyMemberHeightVa = false;
+          }else{
+            $tip.text("");
+            modifyMemberHeightVa = true;
+          }
+        });
+
+        $("#modifySubmitBtn").click(function()
+        {
+          $modifyMemberName.blur();
+          $modifyMemberBirthday.change();
+          $modifyMemberWeight.blur();
+          $modifyMemberHeight.blur();
+          if(modifyMemberNameVa && modifyMemberBirthdayVa && modifyMemberWeightVa && modifyMemberHeightVa){
+            $.post("modify.php", {
+
+            }, function(data){
+
+            }, "json");
+          }else{
+            return false;
+          }
+        });
+
+
+
         $("#modifyMemberBirthday").datepicker({
           format: "yyyy-mm-dd",
           weekStart: 1,
@@ -412,6 +534,8 @@
           autoclose: true,
           todayHighlight: true
         });
+
+
 
         $("#modifyHeadBtn").upload({
           action: "url/up.php", //上传地址

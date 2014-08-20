@@ -71,11 +71,11 @@ html {
       -ms-text-size-adjust: 100%;
 }
 
-a:focus {
-  outline: thin dotted #333;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-}
+/*a:focus {*/
+  /*outline: thin dotted #333;*/
+  /*outline: 5px auto -webkit-focus-ring-color;*/
+  /*outline-offset: -2px;*/
+/*}*/
 
 a:hover,
 a:active {
@@ -649,7 +649,7 @@ a:focus {
 }
 
 p {
-  margin: 0 0 10px;
+  margin: 0;
 }
 
 .lead {
@@ -1068,11 +1068,6 @@ textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
 select,
 textarea,
 input[type="text"],
@@ -1434,7 +1429,7 @@ input[readonly],
 select[readonly],
 textarea[readonly] {
   cursor: not-allowed;
-  background-color: #eeeeee;
+  background-color: #fff;
 }
 
 input[type="radio"][disabled],
