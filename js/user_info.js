@@ -24,14 +24,7 @@
 //  head:""
 //}];
 //
-//function resetData(index){
-//  $("#memberNav li").removeClass("active").eq(index).addClass("active");
-//  $("#modifyMemberName").val(memberData[index].name);
-//  $("#modifyMemberBirthday").val(memberData[index].birthday);
-//  $("#modifyMemberWeight").val(memberData[index].weight);
-//  $("#modifyMemberHeight").val(memberData[index].height);
-//  $("input[value=" + memberData[index].sex + "]").attr("checked", "");
-//}
+
 
 $(function()
 {
@@ -43,11 +36,30 @@ $(function()
 //  $("#memberNav li").last().addClass("last");
 //  resetData(0);
 //
-//  $("#memberNav li").click(function(){
-//    var $items = $("#memberNav>li");
-//    var $curItem = $(this);
-//    resetData($items.index($curItem));
-//  });
+
+  function resetData(index, data){
+    $("#memberNav li").removeClass("active").eq(index).addClass("active");
+    $("#modifyMemberName").val(data.name);
+    $("#modifyMemberBirthday").val(data.birthday);
+    $("#modifyMemberWeight").val(data.weight);
+    $("#modifyMemberHeight").val(data.height);
+    $("input[value=" + data.sex + "]").attr("checked", "");
+  }
+  $("#memberNav li").click(function(){
+    var $items = $("#memberNav>li");
+    var $curItem = $(this);
+    if($curItem.hasClass("active")){
+      return false;
+    }
+    $.getJSON("", {
+      id:$curItem.data("id")
+    }, function(data){
+      if(data.status == 1){
+        resetData($items.index($curItem), data);
+      }
+    });
+
+  });
 
   //表单验证
   var $modifyMemberName = $("#modifyMemberName"),

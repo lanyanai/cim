@@ -59,12 +59,21 @@ $(function(){
     $repeatPassword.blur();
     if(usernameVa && passwordVa && repeatPasswordVa){
       //提交注册
-      $.post("dd.php", {
+      $.post("/user/regist", {
         family_name:$username.val(),
         password:$password.val()
       }, function(data){
-        //注册结果
-        $("#registerTabNav li:eq(1) a").tab("show");
+        //注册结果 json数据
+        if(data.status == 1){
+          $("#user-menu").show();
+          $("#family_id").html(data.family_name + '<b class="caret"></b>');
+          $("#registerTabNav li:eq(1) a").tab("show");
+        }else{
+          $("#step1 input[name=" + data.column + "]").parent().find(".tip").text(data.message);
+          return false;
+        }
+        
+        
       }, "json");
     }else{
       return false;
@@ -132,10 +141,18 @@ $(function(){
     $memberWeight.blur();
     $memberHeight.blur();
     if(memberNameVa && memberBirthdayVa && memberWeightVa && memberHeightVa){
-      $.post("add.php", {
-
+      $.post("/user/member/create", {
+        name:$memberName.val(),
+        born_date:$memberBirthday.val(),
+        sex:$("#step2 input[name=sex]:checked").val(),
+        weight:$memberWeight.val(),
+        height:$memberHeight.val()
       }, function(data){
-        $("#registerTabNav li:eq(2) a").tab("show");
+        if(data.status == 1){
+          $("#registerTabNav li:eq(2) a").tab("show");
+        }else{
+          $("#step2 input[name=" + data.column + "]").parent().find('.tip').text(data.message);
+        }
       }, "json");
     }
   });
@@ -208,10 +225,18 @@ $(function(){
     $addMemberWeight.blur();
     $addMemberHeight.blur();
     if(addMemberNameVa && addMemberBirthdayVa && addMemberWeightVa && addMemberHeightVa){
-      $.post("add.php", {
-
+      $.post("/user/member/create", {
+        name:$addMemberName.val(),
+        born_date:$addMemberBirthday.val(),
+        sex:$("#step4 input[name=sex]:checked").val(),
+        weight:$addMemberWeight.val(),
+        height:$addMemberHeight.val()
       }, function(data){
-        $("#add-info-form")[0].reset();
+        if(data.status == 1){
+          $("#add-info-form")[0].reset();
+        }else{
+          $("#step4 input[name=" + data.column + "]").parent().find('.tip').text(data.message);
+        }
       }, "json");
     }else{
       return false;
